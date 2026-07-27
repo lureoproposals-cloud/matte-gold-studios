@@ -55,6 +55,21 @@ const pricing = [
   },
 ];
 
+const process = [
+  { title: "Konzultace", desc: "Probereme, co potřebujete a jak má web fungovat. Nezávazně a zdarma." },
+  { title: "Návrh", desc: "Připravím design a strukturu webu. Uvidíte ho ještě předtím, než se cokoliv finalizuje." },
+  { title: "Schválení a platba", desc: "Až budete s návrhem spokojeni, teprve tehdy řešíme platbu. Nic neplatíte předem." },
+  { title: "Dokončení a předání", desc: "Web dolaďím, otestuji a předám i s krátkým zaškolením, jak si obsah sami upravovat." },
+];
+
+const faqs = [
+  { q: "Musím platit předem?", a: "Ne. Platba se řeší až po schválení návrhu webu — do té doby nic nedlužíte." },
+  { q: "Co když se mi návrh nebude líbit?", a: "Návrh společně upravíme, dokud nebude odpovídat vaší představě. Teprve po schválení postupujeme k platbě a dokončení." },
+  { q: "Jak dlouho trvá dodání webu?", a: "Obvykle do 2–3 týdnů od konzultace, podle rozsahu projektu." },
+  { q: "Musím rozumět technice?", a: "Ne. Web vám předám s jednoduchým návodem, jak si sami upravovat texty a obsah." },
+  { q: "Co když budu chtít později něco změnit?", a: "Ozvěte se — drobné úpravy vyřešíme, větší rozšíření webu naceníme zvlášť a předem." },
+];
+
 function Index() {
   const [sent, setSent] = useState(false);
 
@@ -69,6 +84,8 @@ function Index() {
             <a href="#o-mne" className="transition-colors hover:text-foreground">O mně</a>
             <a href="#sluzby" className="transition-colors hover:text-foreground">Služby</a>
             <a href="#portfolio" className="transition-colors hover:text-foreground">Portfolio</a>
+            <a href="#postup" className="transition-colors hover:text-foreground">Jak to probíhá</a>
+            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
             <a href="#cenik" className="transition-colors hover:text-foreground">Ceník</a>
             <a href="#kontakt" className="transition-colors hover:text-foreground">Kontakt</a>
           </nav>
@@ -83,7 +100,7 @@ function Index() {
 
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
         <div className="max-w-3xl fade-up">
-          <span className="eyebrow">Studio · Est. 2023</span>
+          <span className="eyebrow">Studio · Est. 2026</span>
           <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
             Weby a propagace<br />
             s klidem <em className="italic text-gold">řemesla.</em>
