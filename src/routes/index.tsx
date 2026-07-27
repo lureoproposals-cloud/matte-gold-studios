@@ -229,6 +229,54 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
+      <section id="postup" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <span className="eyebrow">Jak to probíhá</span>
+        <h2 className="mt-6 font-serif text-3xl md:text-5xl">Čtyři kroky k hotovému webu.</h2>
+
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {process.map((s, i) => (
+            <article
+              key={s.title}
+              className="relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10"
+            >
+              <div>
+                <span className="font-serif text-sm text-mute">0{i + 1}</span>
+                <h3 className="mt-6 font-serif text-2xl md:text-3xl">{s.title}</h3>
+                <p className="mt-5 text-sm leading-relaxed text-mute md:text-base">{s.desc}</p>
+              </div>
+              <div className="mt-10 h-px w-10 bg-white/20" />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
+
+      <section id="faq" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <div className="grid gap-16 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <span className="eyebrow">Časté otázky</span>
+            <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co vás asi zajímá.</h2>
+          </div>
+          <div className="md:col-span-8 border-t border-white/10">
+            {faqs.map((f) => (
+              <details
+                key={f.q}
+                className="group border-b border-white/10 py-6"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg md:text-xl">
+                  <span>{f.q}</span>
+                  <span className="shrink-0 text-mute transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-4 text-sm leading-relaxed text-mute md:text-base">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
+
       <section id="cenik" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="max-w-2xl">
           <span className="eyebrow">Ceník</span>
@@ -237,7 +285,11 @@ function Index() {
             Uvedené ceny jsou orientační a slouží pro první představu. Přesnou nabídku připravím
             po úvodní konzultaci — vždy zdarma a nezávazně.
           </p>
+          <p className="mt-6 border-l-2 border-gold pl-4 text-base text-foreground">
+            Nic neplatíte předem — platbu řešíme až po schválení návrhu.
+          </p>
         </div>
+
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {pricing.map((p) => (
