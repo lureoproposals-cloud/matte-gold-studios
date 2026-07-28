@@ -412,8 +412,9 @@ function Index() {
 
             <button
               type="submit"
-              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity hover:opacity-90"
+              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
             >
+
               {sent ? "Odesláno · děkuji" : "Odeslat poptávku"}
             </button>
           </form>
