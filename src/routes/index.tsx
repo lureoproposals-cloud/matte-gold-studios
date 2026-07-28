@@ -176,7 +176,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="sluzby" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="sluzby" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <span className="eyebrow">Služby</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co pro vás umím připravit.</h2>
 
@@ -184,10 +184,11 @@ function Index() {
           {services.map((s, i) => (
             <article
               key={s.title}
-              className={`relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10 ${
+              className={`card-hover relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10 ${
                 s.soon ? "opacity-70" : ""
               }`}
             >
+
               {s.soon && (
                 <span className="absolute right-6 top-6 border border-white/20 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-mute">
                   Připravujeme
