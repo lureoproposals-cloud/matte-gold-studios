@@ -88,11 +88,17 @@
     font-family: var(--font-serif);
     font-weight: 400;
     letter-spacing: -0.01em;
+    text-shadow: none;
+    filter: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
     background: var(--gold);
     color: #141210;
   }
+
 }
 
 @utility eyebrow {
