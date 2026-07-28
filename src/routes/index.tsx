@@ -145,7 +145,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="o-mne" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="o-mne" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">O mně</span>
