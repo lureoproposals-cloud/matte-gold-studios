@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -72,6 +73,24 @@ const faqs = [
 
 function Index() {
   const [sent, setSent] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -91,7 +110,7 @@ function Index() {
           </nav>
           <a
             href="#kontakt"
-            className="hidden border border-gold bg-gold px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#141210] transition-opacity hover:opacity-90 md:inline-block"
+            className="hidden border border-gold bg-gold px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#141210] transition-opacity duration-200 hover:opacity-90 md:inline-block"
           >
             Konzultace
           </a>
@@ -99,33 +118,34 @@ function Index() {
       </header>
 
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
-        <div className="max-w-3xl fade-up">
-          <span className="eyebrow">LUREO · EST. 2026</span>
-          <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
+        <div className="max-w-3xl">
+          <span className="eyebrow hero-stagger hero-stagger-1 inline-block">LUREO · EST. 2026</span>
+          <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl hero-stagger hero-stagger-2">
             Weby s klidem <em className="italic text-gold">řemesla.</em>
           </h1>
           <span className="gold-underline mt-10 w-40" />
-          <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute">
+          <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute hero-stagger hero-stagger-3">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
             odpovídající kvalitě své práce. Bez šablon, bez zbytečností. Propagaci a sociální sítě přidávám do nabídky brzy.
           </p>
-          <div className="mt-12 flex flex-wrap items-center gap-8">
+          <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
             <a
               href="#kontakt"
-              className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity hover:opacity-90"
+              className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
             >
               Domluvit konzultaci
             </a>
-            <a href="#portfolio" className="text-sm text-mute underline-offset-4 hover:text-foreground hover:underline">
+            <a href="#portfolio" className="text-sm text-mute underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline">
               Prohlédnout práce
             </a>
           </div>
         </div>
       </section>
 
+
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="o-mne" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="o-mne" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">O mně</span>
@@ -156,7 +176,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="sluzby" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="sluzby" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <span className="eyebrow">Služby</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co pro vás umím připravit.</h2>
 
@@ -164,10 +184,11 @@ function Index() {
           {services.map((s, i) => (
             <article
               key={s.title}
-              className={`relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10 ${
+              className={`card-hover relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10 ${
                 s.soon ? "opacity-70" : ""
               }`}
             >
+
               {s.soon && (
                 <span className="absolute right-6 top-6 border border-white/20 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-mute">
                   Připravujeme
@@ -186,7 +207,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="portfolio" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="portfolio" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="eyebrow">Portfolio</span>
@@ -200,8 +221,9 @@ function Index() {
           {portfolio.map((p, idx) => (
             <div
               key={idx}
-              className="block border border-white/10 bg-card"
+              className="card-hover block border border-white/10 bg-card"
             >
+
               <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
                 <div
                   className="absolute inset-0 opacity-[0.06]"
@@ -228,7 +250,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="postup" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="postup" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <span className="eyebrow">Jak to probíhá</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Čtyři kroky k hotovému webu.</h2>
 
@@ -236,8 +258,9 @@ function Index() {
           {process.map((s, i) => (
             <article
               key={s.title}
-              className="relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10"
+              className="card-hover relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10"
             >
+
               <div>
                 <span className="font-serif text-sm text-mute">0{i + 1}</span>
                 <h3 className="mt-6 font-serif text-2xl md:text-3xl">{s.title}</h3>
@@ -251,32 +274,30 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="faq" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="faq" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">Časté otázky</span>
             <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co vás asi zajímá.</h2>
           </div>
           <div className="md:col-span-8 border-t border-white/10">
-            {faqs.map((f) => (
-              <details
+            {faqs.map((f, i) => (
+              <FaqItem
                 key={f.q}
-                className="group border-b border-white/10 py-6"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg md:text-xl">
-                  <span>{f.q}</span>
-                  <span className="shrink-0 text-mute transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-4 text-sm leading-relaxed text-mute md:text-base">{f.a}</p>
-              </details>
+                q={f.q}
+                a={f.a}
+                open={openFaq === i}
+                onToggle={() => setOpenFaq(openFaq === i ? null : i)}
+              />
             ))}
           </div>
         </div>
       </section>
 
+
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="cenik" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="cenik" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="max-w-2xl">
           <span className="eyebrow">Ceník</span>
           <h2 className="mt-6 font-serif text-3xl md:text-5xl">Dva balíčky, transparentně.</h2>
@@ -294,8 +315,9 @@ function Index() {
           {pricing.map((p) => (
             <div
               key={p.name}
-              className="flex flex-col border border-white/10 bg-card p-8 md:p-10"
+              className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
             >
+
               <div className="flex items-baseline justify-between">
                 <h3 className="font-serif text-2xl">{p.name}</h3>
                 {p.featured && <span className="eyebrow">Doporučeno</span>}
@@ -316,7 +338,7 @@ function Index() {
               </ul>
               <a
                 href="#kontakt"
-                className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-white/60"
+                className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
               >
                 Poptat balíček
               </a>
@@ -332,7 +354,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="kontakt" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="kontakt" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5">
             <span className="eyebrow">Kontakt</span>
@@ -390,8 +412,9 @@ function Index() {
 
             <button
               type="submit"
-              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity hover:opacity-90"
+              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
             >
+
               {sent ? "Odesláno · děkuji" : "Odeslat poptávku"}
             </button>
           </form>
@@ -431,3 +454,40 @@ function Field({ label, name, type = "text", placeholder, required }: {
     </div>
   );
 }
+
+function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState(0);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    setMaxH(open ? ref.current.scrollHeight : 0);
+  }, [open, a]);
+
+  return (
+    <div className="border-b border-white/10 py-6">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full cursor-pointer items-center justify-between gap-6 text-left font-serif text-lg md:text-xl"
+      >
+        <span>{q}</span>
+        <span
+          className={`shrink-0 text-mute transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+        >
+          +
+        </span>
+      </button>
+      <div
+        className={`faq-panel ${open ? "is-open" : ""}`}
+        style={{ maxHeight: `${maxH}px` }}
+      >
+        <p ref={ref} className="pt-4 text-sm leading-relaxed text-mute md:text-base">
+          {a}
+        </p>
+      </div>
+    </div>
+  );
+}
+
