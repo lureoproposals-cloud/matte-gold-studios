@@ -454,3 +454,40 @@ function Field({ label, name, type = "text", placeholder, required }: {
     </div>
   );
 }
+
+function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [maxH, setMaxH] = useState(0);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    setMaxH(open ? ref.current.scrollHeight : 0);
+  }, [open, a]);
+
+  return (
+    <div className="border-b border-white/10 py-6">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        className="flex w-full cursor-pointer items-center justify-between gap-6 text-left font-serif text-lg md:text-xl"
+      >
+        <span>{q}</span>
+        <span
+          className={`shrink-0 text-mute transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+        >
+          +
+        </span>
+      </button>
+      <div
+        className={`faq-panel ${open ? "is-open" : ""}`}
+        style={{ maxHeight: `${maxH}px` }}
+      >
+        <p ref={ref} className="pt-4 text-sm leading-relaxed text-mute md:text-base">
+          {a}
+        </p>
+      </div>
+    </div>
+  );
+}
+
