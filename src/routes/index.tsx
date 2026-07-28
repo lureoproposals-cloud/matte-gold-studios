@@ -338,7 +338,7 @@ function Index() {
               </ul>
               <a
                 href="#kontakt"
-                className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors hover:border-white/60"
+                className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
               >
                 Poptat balíček
               </a>
