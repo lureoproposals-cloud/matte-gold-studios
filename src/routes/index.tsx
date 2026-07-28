@@ -73,6 +73,24 @@ const faqs = [
 
 function Index() {
   const [sent, setSent] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -92,7 +110,7 @@ function Index() {
           </nav>
           <a
             href="#kontakt"
-            className="hidden border border-gold bg-gold px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#141210] transition-opacity hover:opacity-90 md:inline-block"
+            className="hidden border border-gold bg-gold px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#141210] transition-opacity duration-200 hover:opacity-90 md:inline-block"
           >
             Konzultace
           </a>
@@ -100,29 +118,30 @@ function Index() {
       </header>
 
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
-        <div className="max-w-3xl fade-up">
-          <span className="eyebrow">LUREO · EST. 2026</span>
-          <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
+        <div className="max-w-3xl">
+          <span className="eyebrow hero-stagger hero-stagger-1 inline-block">LUREO · EST. 2026</span>
+          <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl hero-stagger hero-stagger-2">
             Weby s klidem <em className="italic text-gold">řemesla.</em>
           </h1>
           <span className="gold-underline mt-10 w-40" />
-          <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute">
+          <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute hero-stagger hero-stagger-3">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
             odpovídající kvalitě své práce. Bez šablon, bez zbytečností. Propagaci a sociální sítě přidávám do nabídky brzy.
           </p>
-          <div className="mt-12 flex flex-wrap items-center gap-8">
+          <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
             <a
               href="#kontakt"
-              className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity hover:opacity-90"
+              className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
             >
               Domluvit konzultaci
             </a>
-            <a href="#portfolio" className="text-sm text-mute underline-offset-4 hover:text-foreground hover:underline">
+            <a href="#portfolio" className="text-sm text-mute underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline">
               Prohlédnout práce
             </a>
           </div>
         </div>
       </section>
+
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
