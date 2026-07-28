@@ -274,28 +274,26 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="faq" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="faq" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">Časté otázky</span>
             <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co vás asi zajímá.</h2>
           </div>
           <div className="md:col-span-8 border-t border-white/10">
-            {faqs.map((f) => (
-              <details
+            {faqs.map((f, i) => (
+              <FaqItem
                 key={f.q}
-                className="group border-b border-white/10 py-6"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-serif text-lg md:text-xl">
-                  <span>{f.q}</span>
-                  <span className="shrink-0 text-mute transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-4 text-sm leading-relaxed text-mute md:text-base">{f.a}</p>
-              </details>
+                q={f.q}
+                a={f.a}
+                open={openFaq === i}
+                onToggle={() => setOpenFaq(openFaq === i ? null : i)}
+              />
             ))}
           </div>
         </div>
       </section>
+
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
