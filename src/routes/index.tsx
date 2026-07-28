@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Ateliér — Weby pro malé firmy a projekty" },
+      { title: "Lureo — Weby pro malé firmy a projekty" },
       { name: "description", content: "Studentské studio pro tvorbu webů na míru. Rychlé dodání, transparentní ceny, přímá komunikace." },
     ],
   }),
@@ -78,7 +78,7 @@ function Index() {
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
           <a href="#" className="font-serif text-lg tracking-tight">
-            Ateliér <span className="text-mute">·</span>
+            Lureo <span className="text-mute">·</span>
           </a>
           <nav className="hidden gap-8 text-sm text-mute md:flex">
             <a href="#o-mne" className="transition-colors hover:text-foreground">O mně</a>
@@ -100,15 +100,14 @@ function Index() {
 
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
         <div className="max-w-3xl fade-up">
-          <span className="eyebrow">Studio · Est. 2026</span>
+          <span className="eyebrow">LUREO · EST. 2026</span>
           <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
-            Weby a propagace<br />
-            s klidem <em className="italic text-gold">řemesla.</em>
+            Weby s klidem <em className="italic text-gold">řemesla.</em>
           </h1>
           <span className="gold-underline mt-10 w-40" />
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
-            odpovídající kvalitě své práce. Bez šablon, bez zbytečností.
+            odpovídající kvalitě své práce. Bez šablon, bez zbytečností. Propagaci a sociální sítě přidávám do nabídky brzy.
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-8">
             <a
@@ -346,7 +345,7 @@ function Index() {
             <dl className="mt-12 space-y-6 text-sm">
               <div>
                 <dt className="eyebrow">E-mail</dt>
-                <dd className="mt-2">studio@atelier.cz</dd>
+                <dd className="mt-2">studio@lureo.cz</dd>
               </div>
               <div>
                 <dt className="eyebrow">Telefon</dt>
@@ -402,7 +401,7 @@ function Index() {
       <footer className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-xs text-mute">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-            <span>© {new Date().getFullYear()} Ateliér · Studentské studio pro tvorbu webů</span>
+            <span>© {new Date().getFullYear()} Lureo · Studentské studio pro tvorbu webů</span>
             <span className="uppercase tracking-[0.2em]">Made with care in Brno</span>
           </div>
           <p className="max-w-3xl text-[0.7rem] leading-relaxed text-mute/80">
