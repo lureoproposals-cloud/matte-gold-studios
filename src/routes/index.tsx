@@ -207,7 +207,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="portfolio" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="portfolio" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="eyebrow">Portfolio</span>
@@ -221,8 +221,9 @@ function Index() {
           {portfolio.map((p, idx) => (
             <div
               key={idx}
-              className="block border border-white/10 bg-card"
+              className="card-hover block border border-white/10 bg-card"
             >
+
               <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
                 <div
                   className="absolute inset-0 opacity-[0.06]"
