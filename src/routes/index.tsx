@@ -250,7 +250,7 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="postup" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="postup" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
         <span className="eyebrow">Jak to probíhá</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Čtyři kroky k hotovému webu.</h2>
 
@@ -258,8 +258,9 @@ function Index() {
           {process.map((s, i) => (
             <article
               key={s.title}
-              className="relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10"
+              className="card-hover relative flex flex-col justify-between border border-white/10 bg-card p-8 md:p-10"
             >
+
               <div>
                 <span className="font-serif text-sm text-mute">0{i + 1}</span>
                 <h3 className="mt-6 font-serif text-2xl md:text-3xl">{s.title}</h3>
