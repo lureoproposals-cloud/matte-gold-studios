@@ -26,9 +26,25 @@ const services = [
 ];
 
 const portfolio = [
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
+  {
+    name: "Účetní služby",
+    tag: "Web",
+    meta: "2026",
+    description: "Web pro OSVČ účetní — kompletní prezentace služeb, FAQ a kontaktní formulář.",
+    link: "https://lk-ucetnictvi.cz",
+  },
+  {
+    name: "Koncept: web pro burger bistro",
+    tag: "Koncept",
+    meta: "2026",
+    description: "Ukázkový projekt — responzivní web s menu, informacemi o rozvozu a kontaktními údaji.",
+  },
+  {
+    name: "Koncept: web pro autoservis",
+    tag: "Koncept",
+    meta: "2026",
+    description: "Ukázkový projekt — prezentace služeb, sekce o firmě a kontaktní formulář.",
+  },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
