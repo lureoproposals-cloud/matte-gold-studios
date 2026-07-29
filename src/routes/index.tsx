@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
+import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
+
+
 
 
 export const Route = createFileRoute("/")({
@@ -32,6 +36,7 @@ const portfolio = [
     meta: "2026",
     description: "Web pro OSVČ účetní — kompletní prezentace služeb, FAQ a kontaktní formulář.",
     link: "https://lk-ucetnictvi.cz",
+    image: ucetniScreenshot.url,
   },
   {
     name: "Koncept: web pro burger bistro",
@@ -44,6 +49,7 @@ const portfolio = [
     tag: "Koncept",
     meta: "2026",
     description: "Ukázkový projekt — prezentace služeb, sekce o firmě a kontaktní formulář.",
+    image: autoservisScreenshot.url,
   },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
@@ -246,13 +252,25 @@ function Index() {
               >
 
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
-                  <div
-                    className="absolute inset-0 opacity-[0.06]"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 14px)",
-                    }}
-                  />
+                  {p.image ? (
+                    <>
+                      <img
+                        src={p.image}
+                        alt={`Screenshot ${p.name}`}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-[#141210]/60" />
+                    </>
+                  ) : (
+                    <div
+                      className="absolute inset-0 opacity-[0.06]"
+                      style={{
+                        backgroundImage:
+                          "repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 14px)",
+                      }}
+                    />
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="font-serif text-sm italic text-mute">{p.tag}</span>
                   </div>
