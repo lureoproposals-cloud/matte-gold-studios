@@ -37,20 +37,20 @@ const portfolio = [
 const pricing = [
   {
     name: "Start",
-    price: "12 000",
+    price: "2 900",
     tagline: "Jednostránkový web pro jasnou prezentaci",
     items: ["Jednostránkový web", "Responzivní design", "Formulář a kontakty", "Základní SEO"],
   },
   {
     name: "Standard",
-    price: "28 000",
+    price: "7 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
     items: [
       "Web do 5 podstránek",
       "Systém pro úpravu obsahu",
       "Napojení analytiky",
       "Rozšířené SEO",
-      "Poradenství 3 měsíce",
+      "Technická podpora 3 měsíce",
     ],
     featured: true,
   },
@@ -367,15 +367,15 @@ function Index() {
             <dl className="mt-12 space-y-6 text-sm">
               <div>
                 <dt className="eyebrow">E-mail</dt>
-                <dd className="mt-2">studio@lureo.cz</dd>
+                <dd className="mt-2">lureoproposals@gmail.com</dd>
               </div>
               <div>
                 <dt className="eyebrow">Telefon</dt>
-                <dd className="mt-2">+420 776 000 000</dd>
+                <dd className="mt-2">+420 703 395 225</dd>
               </div>
               <div>
                 <dt className="eyebrow">Sídlo</dt>
-                <dd className="mt-2">Brno, Česká republika</dd>
+                <dd className="mt-2">Okres Bruntál, Česká republika</dd>
               </div>
             </dl>
           </div>
