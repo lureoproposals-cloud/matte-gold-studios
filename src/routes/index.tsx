@@ -37,20 +37,20 @@ const portfolio = [
 const pricing = [
   {
     name: "Start",
-    price: "12 000",
+    price: "2 900",
     tagline: "Jednostránkový web pro jasnou prezentaci",
     items: ["Jednostránkový web", "Responzivní design", "Formulář a kontakty", "Základní SEO"],
   },
   {
     name: "Standard",
-    price: "28 000",
+    price: "7 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
     items: [
       "Web do 5 podstránek",
       "Systém pro úpravu obsahu",
       "Napojení analytiky",
       "Rozšířené SEO",
-      "Poradenství 3 měsíce",
+      "Technická podpora 3 měsíce",
     ],
     featured: true,
   },
@@ -367,15 +367,15 @@ function Index() {
             <dl className="mt-12 space-y-6 text-sm">
               <div>
                 <dt className="eyebrow">E-mail</dt>
-                <dd className="mt-2">studio@lureo.cz</dd>
+                <dd className="mt-2">lureoproposals@gmail.com</dd>
               </div>
               <div>
                 <dt className="eyebrow">Telefon</dt>
-                <dd className="mt-2">+420 776 000 000</dd>
+                <dd className="mt-2">+420 703 395 225</dd>
               </div>
               <div>
                 <dt className="eyebrow">Sídlo</dt>
-                <dd className="mt-2">Brno, Česká republika</dd>
+                <dd className="mt-2">Okres Bruntál, Česká republika</dd>
               </div>
             </dl>
           </div>
@@ -425,7 +425,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-xs text-mute">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <span>© {new Date().getFullYear()} Lureo · Studentské studio pro tvorbu webů</span>
-            <span className="uppercase tracking-[0.2em]">Made with care in Brno</span>
+            <span className="uppercase tracking-[0.2em]">Okres Bruntál · Česká republika</span>
           </div>
           <p className="max-w-3xl text-[0.7rem] leading-relaxed text-mute/80">
             Služby jsou poskytovány v rámci příležitostné výdělečné činnosti v souladu s platnou
