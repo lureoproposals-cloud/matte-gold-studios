@@ -26,9 +26,25 @@ const services = [
 ];
 
 const portfolio = [
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
+  {
+    name: "Účetní služby",
+    tag: "Web",
+    meta: "2026",
+    description: "Web pro OSVČ účetní — kompletní prezentace služeb, FAQ a kontaktní formulář.",
+    link: "https://lk-ucetnictvi.cz",
+  },
+  {
+    name: "Koncept: web pro burger bistro",
+    tag: "Koncept",
+    meta: "2026",
+    description: "Ukázkový projekt — responzivní web s menu, informacemi o rozvozu a kontaktními údaji.",
+  },
+  {
+    name: "Koncept: web pro autoservis",
+    tag: "Koncept",
+    meta: "2026",
+    description: "Ukázkový projekt — prezentace služeb, sekce o firmě a kontaktní formulář.",
+  },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
   { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
@@ -214,37 +230,45 @@ function Index() {
             <h2 className="mt-6 font-serif text-3xl md:text-5xl">Vybraná práce.</h2>
           </div>
           <p className="max-w-sm text-sm text-mute">
-            Aktuálně pracuji na prvních referenčních projektech. Ukázky doplním, jakmile budou hotové.
+            Výběr z dosavadní práce — od reálných zakázek po vlastní koncepty.
           </p>
         </div>
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolio.map((p, idx) => (
-            <div
-              key={idx}
-              className="card-hover block border border-white/10 bg-card"
-            >
+          {portfolio.map((p, idx) => {
+            const Wrapper = p.link ? "a" : "div";
+            return (
+              <Wrapper
+                key={idx}
+                {...(p.link
+                  ? { href: p.link, target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="card-hover block border border-white/10 bg-card"
+              >
 
-              <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
-                <div
-                  className="absolute inset-0 opacity-[0.06]"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 14px)",
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-serif text-sm italic text-mute">{p.tag}</span>
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
+                  <div
+                    className="absolute inset-0 opacity-[0.06]"
+                    style={{
+                      backgroundImage:
+                        "repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 14px)",
+                    }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-serif text-sm italic text-mute">{p.tag}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center justify-between px-6 py-5">
-                <div className="min-w-0">
-                  <h3 className="truncate font-serif text-lg">{p.name}</h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.18em] text-mute">{p.tag}</p>
+                <div className="px-6 py-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-serif text-lg">{p.name}</h3>
+                    <span className="shrink-0 pl-3 text-xs text-mute">{p.meta}</span>
+                  </div>
+                  {p.description && (
+                    <p className="mt-3 text-sm leading-relaxed text-mute">{p.description}</p>
+                  )}
                 </div>
-                <span className="shrink-0 pl-3 text-xs text-mute">{p.meta}</span>
-              </div>
-            </div>
-          ))}
+              </Wrapper>
+            );
+          })}
         </div>
       </section>
 
