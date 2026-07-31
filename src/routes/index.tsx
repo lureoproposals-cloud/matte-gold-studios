@@ -51,9 +51,6 @@ const portfolio = [
     description: "Ukázkový projekt — prezentace služeb, sekce o firmě a kontaktní formulář.",
     image: autoservisScreenshot.url,
   },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
-  { name: "Projekt připravujeme", tag: "Ukázka brzy", meta: "—" },
 ];
 
 const pricing = [
@@ -78,6 +75,9 @@ const pricing = [
   },
 ];
 
+// Získej zdarma na https://web3forms.com (jen zadáš e-mail, žádný účet) a vlož sem.
+const WEB3FORMS_ACCESS_KEY = "658a1c2b-7a94-4c64-97ab-d70807063be8";
+
 const process = [
   { title: "Konzultace", desc: "Probereme, co potřebujete a jak má web fungovat. Nezávazně a zdarma." },
   { title: "Návrh", desc: "Připravím design a strukturu webu. Uvidíte ho ještě předtím, než se cokoliv finalizuje." },
@@ -94,7 +94,7 @@ const faqs = [
 ];
 
 function Index() {
-  const [sent, setSent] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
@@ -423,7 +423,29 @@ function Index() {
           </div>
 
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setFormStatus("sending");
+              const formEl = e.currentTarget;
+              const data = new FormData(formEl);
+              data.append("access_key", WEB3FORMS_ACCESS_KEY);
+              data.append("subject", "Nová poptávka z webu Lureo");
+              try {
+                const res = await fetch("https://api.web3forms.com/submit", {
+                  method: "POST",
+                  body: data,
+                });
+                const result = await res.json();
+                if (result.success) {
+                  setFormStatus("sent");
+                  formEl.reset();
+                } else {
+                  setFormStatus("error");
+                }
+              } catch {
+                setFormStatus("error");
+              }
+            }}
             className="md:col-span-7 border border-white/10 bg-card p-8 md:p-12"
           >
             <div className="space-y-8">
@@ -433,6 +455,7 @@ function Index() {
                 <label className="eyebrow" htmlFor="msg">Popis projektu</label>
                 <textarea
                   id="msg"
+                  name="message"
                   rows={5}
                   required
                   placeholder="Krátce popište, co máte v plánu…"
@@ -443,6 +466,7 @@ function Index() {
                 <label className="eyebrow" htmlFor="budget">Orientační rozpočet</label>
                 <select
                   id="budget"
+                  name="budget"
                   className="mt-3 w-full border-0 border-b border-white/15 bg-transparent pb-3 text-foreground focus:border-white/50 focus:outline-none"
                 >
                   <option className="bg-card">Do 15 000 Kč</option>
@@ -454,11 +478,24 @@ function Index() {
 
             <button
               type="submit"
-              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
+              disabled={formStatus === "sending"}
+              className="mt-12 border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-
-              {sent ? "Odesláno · děkuji" : "Odeslat poptávku"}
+              {formStatus === "sending"
+                ? "Odesílám…"
+                : formStatus === "sent"
+                ? "Odesláno · děkuji"
+                : "Odeslat poptávku"}
             </button>
+            {formStatus === "error" && (
+              <p className="mt-4 text-sm text-red-400">
+                Něco se nepovedlo. Zkuste to prosím znovu, nebo mi napište přímo na{" "}
+                <a href="mailto:lureoproposals@gmail.com" className="underline">
+                  lureoproposals@gmail.com
+                </a>
+                .
+              </p>
+            )}
           </form>
         </div>
       </section>
@@ -532,4 +569,3 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
     </div>
   );
 }
-
