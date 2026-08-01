@@ -293,7 +293,7 @@ function Index() {
                 </span>
               )}
               <div>
-                <span className="font-serif text-sm text-mute">0{i + 1}</span>
+                <span className="font-mono text-sm text-mute">0{i + 1}</span>
                 <h3 className="mt-6 font-serif text-2xl md:text-3xl">{s.title}</h3>
                 <p className="mt-5 text-sm leading-relaxed text-mute md:text-base">{s.desc}</p>
               </div>
@@ -380,7 +380,7 @@ function Index() {
             >
 
               <div>
-                <span className="font-serif text-sm text-mute">0{i + 1}</span>
+                <span className="font-mono text-sm text-mute">0{i + 1}</span>
                 <h3 className="mt-6 font-serif text-2xl md:text-3xl">{s.title}</h3>
                 <p className="mt-5 text-sm leading-relaxed text-mute md:text-base">{s.desc}</p>
               </div>
