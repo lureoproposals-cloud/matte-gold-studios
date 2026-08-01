@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
 import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
 
@@ -12,6 +13,10 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Lureo — Weby pro malé firmy a projekty" },
       { name: "description", content: "Studentské studio pro tvorbu webů na míru. Rychlé dodání, transparentní ceny, přímá komunikace." },
+      { property: "og:title", content: "Lureo — Weby pro malé firmy a projekty" },
+      { property: "og:description", content: "Studentské studio pro tvorbu webů na míru. Rychlé dodání, transparentní ceny, přímá komunikace." },
+      { property: "og:image", content: "https://matte-gold-studios.lovable.app/__l5e/assets-v1/35e62c1f-b18c-4ccf-b7ac-46b0447ccc76/og-lureo.png" },
+      { name: "twitter:image", content: "https://matte-gold-studios.lovable.app/__l5e/assets-v1/35e62c1f-b18c-4ccf-b7ac-46b0447ccc76/og-lureo.png" },
     ],
   }),
 });
@@ -93,9 +98,27 @@ const faqs = [
   { q: "Co když budu chtít později něco změnit?", a: "Ozvěte se — drobné úpravy vyřešíme, větší rozšíření webu naceníme zvlášť a předem." },
 ];
 
+const navLinks = [
+  { href: "#o-mne", label: "O mně" },
+  { href: "#sluzby", label: "Služby" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#postup", label: "Jak to probíhá" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#cenik", label: "Ceník" },
+  { href: "#kontakt", label: "Kontakt" },
+];
+
 function Index() {
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
@@ -122,13 +145,11 @@ function Index() {
             Lureo <span className="text-mute">·</span>
           </a>
           <nav className="hidden gap-8 text-sm text-mute md:flex">
-            <a href="#o-mne" className="transition-colors hover:text-foreground">O mně</a>
-            <a href="#sluzby" className="transition-colors hover:text-foreground">Služby</a>
-            <a href="#portfolio" className="transition-colors hover:text-foreground">Portfolio</a>
-            <a href="#postup" className="transition-colors hover:text-foreground">Jak to probíhá</a>
-            <a href="#faq" className="transition-colors hover:text-foreground">FAQ</a>
-            <a href="#cenik" className="transition-colors hover:text-foreground">Ceník</a>
-            <a href="#kontakt" className="transition-colors hover:text-foreground">Kontakt</a>
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="transition-colors hover:text-foreground">
+                {l.label}
+              </a>
+            ))}
           </nav>
           <a
             href="#kontakt"
@@ -136,8 +157,63 @@ function Index() {
           >
             Konzultace
           </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(true)}
+            aria-label="Otevřít menu"
+            aria-expanded={menuOpen}
+            className="text-foreground transition-opacity duration-200 hover:opacity-70 md:hidden"
+          >
+            <Menu size={24} strokeWidth={1.5} />
+          </button>
         </div>
       </header>
+
+      {/* Mobilní menu */}
+      <div
+        className={`fixed inset-0 z-50 flex flex-col bg-background transition-opacity duration-300 md:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">
+          <span className="font-serif text-lg tracking-tight">
+            Lureo <span className="text-mute">·</span>
+          </span>
+          <button
+            type="button"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Zavřít menu"
+            className="text-foreground transition-opacity duration-200 hover:opacity-70"
+          >
+            <X size={24} strokeWidth={1.5} />
+          </button>
+        </div>
+        <nav className="flex flex-1 flex-col justify-center px-6">
+          {navLinks.map((l, i) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className={`border-b border-white/10 py-4 font-serif text-2xl tracking-tight transition-all duration-500 ${
+                menuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+              }`}
+              style={{ transitionDelay: menuOpen ? `${100 + i * 50}ms` : "0ms" }}
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+        <div className="px-6 pb-10">
+          <a
+            href="#kontakt"
+            onClick={() => setMenuOpen(false)}
+            className="block border border-gold bg-gold px-8 py-4 text-center text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
+          >
+            Domluvit konzultaci
+          </a>
+        </div>
+      </div>
 
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
         <div className="max-w-3xl">
