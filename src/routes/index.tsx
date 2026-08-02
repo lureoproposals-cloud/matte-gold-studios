@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
 import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
+import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
+import { BeforeAfter } from "../components/BeforeAfter";
+import { HeroIntro } from "../components/HeroIntro";
+import { Reveal } from "../components/Reveal";
 
 
 
@@ -48,6 +52,7 @@ const portfolio = [
     tag: "Koncept",
     meta: "2026",
     description: "Ukázkový projekt — responzivní web s menu, informacemi o rozvozu a kontaktními údaji.",
+    image: burgerScreenshot.url,
   },
   {
     name: "Koncept: web pro autoservis",
@@ -120,25 +125,10 @@ function Index() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <HeroIntro />
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
           <a href="#" className="font-serif text-lg tracking-tight">
@@ -243,7 +233,8 @@ function Index() {
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="o-mne" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="o-mne" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">O mně</span>
@@ -270,11 +261,13 @@ function Index() {
             </dl>
           </div>
         </div>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="sluzby" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="sluzby" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <span className="eyebrow">Služby</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Co pro vás umím připravit.</h2>
 
@@ -301,11 +294,13 @@ function Index() {
             </article>
           ))}
         </div>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="portfolio" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="portfolio" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <span className="eyebrow">Portfolio</span>
@@ -316,59 +311,37 @@ function Index() {
           </p>
         </div>
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolio.map((p, idx) => {
-            const Wrapper = p.link ? "a" : "div";
-            return (
-              <Wrapper
-                key={idx}
-                {...(p.link
-                  ? { href: p.link, target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="card-hover block border border-white/10 bg-card"
-              >
-
-                <div className="relative aspect-[4/5] overflow-hidden bg-[#1a1714]">
-                  {p.image ? (
-                    <>
-                      <img
-                        src={p.image}
-                        alt={`Screenshot ${p.name}`}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-[#141210]/60" />
-                    </>
-                  ) : (
-                    <div
-                      className="absolute inset-0 opacity-[0.06]"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(45deg, #ffffff 0 1px, transparent 1px 14px)",
-                      }}
-                    />
-                  )}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-serif text-sm italic text-mute">{p.tag}</span>
-                  </div>
+          {portfolio.map((p, idx) => (
+            <article key={idx} className="card-hover border border-white/10 bg-card">
+              <BeforeAfter image={p.image} name={p.name} tag={p.tag} />
+              <div className="px-6 py-5">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-serif text-lg">{p.name}</h3>
+                  <span className="shrink-0 pl-3 text-xs text-mute">{p.meta}</span>
                 </div>
-                <div className="px-6 py-5">
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-serif text-lg">{p.name}</h3>
-                    <span className="shrink-0 pl-3 text-xs text-mute">{p.meta}</span>
-                  </div>
-                  {p.description && (
-                    <p className="mt-3 text-sm leading-relaxed text-mute">{p.description}</p>
-                  )}
-                </div>
-              </Wrapper>
-            );
-          })}
+                <p className="mt-3 text-sm leading-relaxed text-mute">{p.description}</p>
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm text-mute underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
+                  >
+                    lk-ucetnictvi.cz
+                    <ArrowUpRight size={14} strokeWidth={1.5} />
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="postup" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="postup" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <span className="eyebrow">Jak to probíhá</span>
         <h2 className="mt-6 font-serif text-3xl md:text-5xl">Čtyři kroky k hotovému webu.</h2>
 
@@ -388,11 +361,13 @@ function Index() {
             </article>
           ))}
         </div>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="faq" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="faq" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <span className="eyebrow">Časté otázky</span>
@@ -410,12 +385,14 @@ function Index() {
             ))}
           </div>
         </div>
+        </Reveal>
       </section>
 
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="cenik" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="cenik" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <div className="max-w-2xl">
           <span className="eyebrow">Ceník</span>
           <h2 className="mt-6 font-serif text-3xl md:text-5xl">Dva balíčky, transparentně.</h2>
@@ -468,11 +445,13 @@ function Index() {
           Správu sociálních sítí připravuji do budoucí nabídky — dejte mi vědět, pokud máte zájem
           být mezi prvními.
         </p>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-6xl px-6"><div className="h-px w-full bg-white/10" /></div>
 
-      <section id="kontakt" data-reveal className="reveal mx-auto max-w-6xl px-6 py-28 md:py-36">
+      <section id="kontakt" className="mx-auto max-w-6xl px-6 py-28 md:py-36">
+        <Reveal>
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-5">
             <span className="eyebrow">Kontakt</span>
@@ -574,6 +553,7 @@ function Index() {
             )}
           </form>
         </div>
+        </Reveal>
       </section>
 
       <footer className="border-t border-white/10">
