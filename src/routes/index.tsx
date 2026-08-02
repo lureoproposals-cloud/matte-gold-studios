@@ -503,7 +503,7 @@ function Index() {
               </div>
               <div>
                 <dt className="eyebrow">Sídlo</dt>
-                <dd className="mt-2">Okres Bruntál, Česká republika</dd>
+                <dd className="mt-2">Celá ČR · konzultace online i osobně dle domluvy</dd>
               </div>
             </dl>
           </div>
@@ -591,7 +591,7 @@ function Index() {
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-xs text-mute">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <span>© {new Date().getFullYear()} Lureo · Studentské studio pro tvorbu webů</span>
-            <span className="uppercase tracking-[0.2em]">Okres Bruntál · Česká republika</span>
+            <span className="uppercase tracking-[0.2em]">Působím po celé ČR</span>
           </div>
           <p className="max-w-3xl text-[0.7rem] leading-relaxed text-mute/80">
             Služby jsou poskytovány v rámci příležitostné výdělečné činnosti v souladu s platnou
