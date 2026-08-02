@@ -12,17 +12,20 @@ export function Reveal({
 }) {
   const reduce = useReducedMotion();
 
-  if (reduce) {
-    return <div className={className}>{children}</div>;
-  }
-
+  // Pozn.: vždy renderujeme motion.div se stejným `initial`, aby se SSR HTML
+  // shodovalo s prvním klientským renderem (hydration). Reduced motion řešíme
+  // pouze přes transition (nemění renderované atributy) — obsah se ukáže okamžitě.
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "0px 0px -60px 0px" }}
-      transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1], delay }}
+      transition={
+        reduce
+          ? { duration: 0, delay: 0 }
+          : { duration: 0.7, ease: [0.2, 0.7, 0.2, 1], delay }
+      }
     >
       {children}
     </motion.div>
