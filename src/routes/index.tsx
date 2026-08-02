@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
 import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
@@ -68,18 +68,23 @@ const pricing = [
     name: "Start",
     price: "2 900",
     tagline: "Jednostránkový web pro jasnou prezentaci",
-    items: ["Jednostránkový web", "Responzivní design", "Formulář a kontakty", "Základní SEO"],
+    items: [
+      "Jednostránkový web s kotvovou navigací",
+      "Responzivní design pro mobil i desktop",
+      "Kontaktní formulář napojený na váš e-mail",
+      "Základní SEO — meta tagy, sitemap, rychlé načítání",
+    ],
   },
   {
     name: "Standard",
     price: "7 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
     items: [
-      "Web do 5 podstránek",
-      "Systém pro úpravu obsahu",
-      "Napojení analytiky",
-      "Rozšířené SEO",
-      "Technická podpora 3 měsíce",
+      "Až 5 podstránek s vlastní URL",
+      "Systém pro úpravu obsahu bez programátora",
+      "Napojení analytiky návštěvnosti",
+      "Rozšířené SEO — struktura stránek pro Google",
+      "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
     ],
     featured: true,
   },
@@ -208,7 +213,7 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-32 md:pt-36 md:pb-44">
         <div className="max-w-3xl">
           <span className="eyebrow hero-stagger hero-stagger-1 inline-block">LUREO · EST. 2026</span>
-          <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl hero-stagger hero-stagger-2">
+          <h1 className="hero-sweep mt-8 font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl hero-stagger hero-stagger-2">
             Weby s klidem <em className="italic text-gold">řemesla.</em>
           </h1>
           <span className="gold-underline mt-10 w-40" />
@@ -217,12 +222,14 @@ function Index() {
             odpovídající kvalitě své práce. Bez šablon, bez zbytečností. Propagaci a sociální sítě přidávám do nabídky brzy.
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
-            <a
-              href="#kontakt"
-              className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
-            >
-              Domluvit konzultaci
-            </a>
+            <Magnetic>
+              <a
+                href="#kontakt"
+                className="border border-gold bg-gold px-8 py-4 text-xs uppercase tracking-[0.24em] text-[#141210] transition-opacity duration-200 hover:opacity-90"
+              >
+                Domluvit konzultaci
+              </a>
+            </Magnetic>
             <a href="#portfolio" className="text-sm text-mute underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline">
               Prohlédnout práce
             </a>
@@ -245,12 +252,20 @@ function Index() {
             </h2>
             <div className="mt-10 space-y-6 text-base leading-relaxed text-mute md:text-lg">
               <p>
-                Jsem student a weby tvořím moderním, AI-asistovaným procesem — od průzkumu a obsahu
-                až po finální design. Díky tomu umím dodat kvalitní web rychle a za rozumnou cenu.
+                Zastaralý nebo žádný web znamená jediné — zákazníci, kteří vás hledají, skončí
+                u konkurence, která se na Googlu objeví jako první. U malé firmy stačí pár
+                takových hledání týdně a rozdíl je na tržbách znát.
+              </p>
+              <p className="font-serif text-xl text-foreground md:text-2xl">Tohle řeším.</p>
+              <p>
+                Jsem student a weby tvořím moderním, AI-asistovaným procesem — od průzkumu a
+                obsahu až po finální design. Proto dodám kvalitní web rychle a za cenu, která
+                dává malé firmě smysl.
               </p>
               <p>
-                Pracuji na malém počtu zakázek najednou, aby každá dostala pozornost. Termíny držím,
-                ceny říkám dopředu.
+                Beru si jen několik zakázek najednou, takže každá dostane plnou pozornost.
+                Termíny držím, ceny říkám dopředu a o platbě se bavíme až po schválení návrhu —
+                žádná překvapení.
               </p>
             </div>
             <dl className="mt-14 border-t border-white/10 pt-10">
@@ -403,6 +418,22 @@ function Index() {
           <p className="mt-6 border-l-2 border-gold pl-4 text-base text-foreground">
             Nic neplatíte předem — platbu řešíme až po schválení návrhu.
           </p>
+          <div className="mt-10 grid gap-8 border border-white/10 bg-card p-8 md:grid-cols-2">
+            <div>
+              <h3 className="font-serif text-lg">Jednostránkový web</h3>
+              <p className="mt-2 text-sm leading-relaxed text-mute">
+                Vše na jedné stránce s kotvovými odkazy — jako tenhle web. Ideální pro jasnou,
+                stručnou prezentaci.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-lg">Web do 5 podstránek</h3>
+              <p className="mt-2 text-sm leading-relaxed text-mute">
+                Samostatné stránky s vlastní URL (Domů, Služby, Portfolio, Kontakt…). Hodí se,
+                když je obsahu víc, nebo když záleží na SEO jednotlivých stránek.
+              </p>
+            </div>
+          </div>
         </div>
 
 
@@ -623,5 +654,34 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
         </p>
       </div>
     </div>
+  );
+}
+
+/**
+ * Magnetický hover — obal se jemně posune směrem ke kurzoru.
+ * Aktivní jen pro myš a pouze bez prefers-reduced-motion.
+ */
+function Magnetic({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  return (
+    <span
+      ref={ref}
+      className="magnetic"
+      onPointerMove={(e) => {
+        if (e.pointerType !== "mouse") return;
+        const el = ref.current;
+        if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        el.style.transform = `translate(${(x * 0.18).toFixed(1)}px, ${(y * 0.3).toFixed(1)}px)`;
+      }}
+      onPointerLeave={() => {
+        if (ref.current) ref.current.style.transform = "";
+      }}
+    >
+      {children}
+    </span>
   );
 }
