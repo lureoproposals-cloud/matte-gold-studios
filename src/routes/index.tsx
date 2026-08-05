@@ -32,9 +32,9 @@ const services = [
     soon: false,
   },
   {
-    title: "Propagace a sociální sítě",
-    desc: "Tuto službu aktuálně připravuji a brzy přidám do nabídky. Pokud vás zajímá, napište mi — ozvu se, jakmile bude k dispozici.",
-    soon: true,
+    title: "Správa sociálních sítí",
+    desc: "Pravidelná správa Instagramu a Facebooku pro firmy, které mají web a chtějí konzistentní online přítomnost. Měsíční plánování, jednotný vizuální styl a přehled o tom, co vaše publikum zaujme.",
+    soon: false,
   },
 ];
 
@@ -85,6 +85,35 @@ const pricing = [
       "Napojení analytiky návštěvnosti",
       "Rozšířené SEO — struktura stránek pro Google",
       "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
+    ],
+    featured: true,
+  },
+];
+
+const socialPricing = [
+  {
+    name: "Sociální sítě — Basic",
+    price: "2 900",
+    period: "měsíc",
+    tagline: "Pravidelný obsah pro klidný růst",
+    items: [
+      "4 příspěvky měsíčně na Instagram a Facebook",
+      "Jednotný vizuální styl příspěvků",
+      "Návrh témat a základní komunikační plán",
+      "Bez Stories, bez správy reklam",
+    ],
+  },
+  {
+    name: "Sociální sítě — Premium",
+    price: "5 900",
+    period: "měsíc",
+    tagline: "Komplexní péče o vaši online přítomnost",
+    items: [
+      "8 příspěvků měsíčně na Instagram a Facebook",
+      "Stories v ceně (až 12 kusů měsíčně)",
+      "Jednotný vizuální styl a brand voice",
+      "Základní měsíční přehled výkonu",
+      "Možnost správy reklam po domluvě",
     ],
     featured: true,
   },
@@ -219,7 +248,7 @@ function Index() {
           <span className="gold-underline mt-10 w-40" />
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute hero-stagger hero-stagger-3">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
-            odpovídající kvalitě své práce. Bez šablon, bez zbytečností. Propagaci a sociální sítě přidávám do nabídky brzy.
+            odpovídající kvalitě své práce. Bez šablon, bez zbytečností. K webům teď nabízím i měsíční správu sociálních sítí.
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
             <Magnetic>
@@ -410,7 +439,7 @@ function Index() {
         <Reveal>
         <div className="max-w-2xl">
           <span className="eyebrow">Ceník</span>
-          <h2 className="mt-6 font-serif text-3xl md:text-5xl">Dva balíčky, transparentně.</h2>
+          <h2 className="mt-6 font-serif text-3xl md:text-5xl">Weby a sociální sítě, transparentně.</h2>
           <p className="mt-6 text-base leading-relaxed text-mute">
             Uvedené ceny jsou orientační a slouží pro první představu. Přesnou nabídku připravím
             po úvodní konzultaci — vždy zdarma a nezávazně.
@@ -436,46 +465,83 @@ function Index() {
           </div>
         </div>
 
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {pricing.map((p) => (
-            <div
-              key={p.name}
-              className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
-            >
-
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-serif text-2xl">{p.name}</h3>
-                {p.featured && <span className="eyebrow">Doporučeno</span>}
-              </div>
-              <p className="mt-3 text-sm text-mute">{p.tagline}</p>
-              <div className="mt-10 flex items-baseline gap-2">
-                <span className="font-serif text-5xl">{p.price}</span>
-                <span className="text-sm text-mute">Kč</span>
-              </div>
-              <div className="my-8 h-px bg-white/10" />
-              <ul className="space-y-3 text-sm">
-                {p.items.map((it) => (
-                  <li key={it} className="flex gap-3">
-                    <span className="mt-2 h-px w-3 shrink-0 bg-white/40" />
-                    <span>{it}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#kontakt"
-                className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+        <div className="mt-16">
+          <h3 className="font-serif text-2xl">Weby — jednorázová realizace</h3>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {pricing.map((p) => (
+              <div
+                key={p.name}
+                className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
               >
-                Poptat balíček
-              </a>
-            </div>
-          ))}
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-serif text-2xl">{p.name}</h3>
+                  {p.featured && <span className="eyebrow">Doporučeno</span>}
+                </div>
+                <p className="mt-3 text-sm text-mute">{p.tagline}</p>
+                <div className="mt-10 flex items-baseline gap-2">
+                  <span className="font-serif text-5xl">{p.price}</span>
+                  <span className="text-sm text-mute">{p.period ? `Kč / ${p.period}` : "Kč"}</span>
+                </div>
+                <div className="my-8 h-px bg-white/10" />
+                <ul className="space-y-3 text-sm">
+                  {p.items.map((it) => (
+                    <li key={it} className="flex gap-3">
+                      <span className="mt-2 h-px w-3 shrink-0 bg-white/40" />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#kontakt"
+                  className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+                >
+                  Poptat balíček
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <p className="mt-10 max-w-2xl text-sm text-mute">
-          Správu sociálních sítí připravuji do budoucí nabídky — dejte mi vědět, pokud máte zájem
-          být mezi prvními.
-        </p>
+        <div className="mt-16">
+          <h3 className="font-serif text-2xl">Správa sociálních sítí — měsíční služba</h3>
+          <p className="mt-3 max-w-2xl text-sm text-mute">
+            Samostatná měsíční péče pro firmy, které už web mají a chtějí pravidelnou přítomnost na
+            Instagramu a Facebooku. Lze kombinovat s webem nebo objednat samostatně.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {socialPricing.map((p) => (
+              <div
+                key={p.name}
+                className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
+              >
+                <div className="flex items-baseline justify-between">
+                  <h3 className="font-serif text-2xl">{p.name}</h3>
+                  {p.featured && <span className="eyebrow">Doporučeno</span>}
+                </div>
+                <p className="mt-3 text-sm text-mute">{p.tagline}</p>
+                <div className="mt-10 flex items-baseline gap-2">
+                  <span className="font-serif text-5xl">{p.price}</span>
+                  <span className="text-sm text-mute">{p.period ? `Kč / ${p.period}` : "Kč"}</span>
+                </div>
+                <div className="my-8 h-px bg-white/10" />
+                <ul className="space-y-3 text-sm">
+                  {p.items.map((it) => (
+                    <li key={it} className="flex gap-3">
+                      <span className="mt-2 h-px w-3 shrink-0 bg-white/40" />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#kontakt"
+                  className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+                >
+                  Poptat balíček
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
         </Reveal>
       </section>
 
