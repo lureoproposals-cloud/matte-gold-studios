@@ -480,7 +480,7 @@ function Index() {
                 <p className="mt-3 text-sm text-mute">{p.tagline}</p>
                 <div className="mt-10 flex items-baseline gap-2">
                   <span className="font-serif text-5xl">{p.price}</span>
-                  <span className="text-sm text-mute">{p.period ? `Kč / ${p.period}` : "Kč"}</span>
+                  <span className="text-sm text-mute">Kč</span>
                 </div>
                 <div className="my-8 h-px bg-white/10" />
                 <ul className="space-y-3 text-sm">
