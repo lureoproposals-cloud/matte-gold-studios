@@ -7,7 +7,7 @@ import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
 import { BeforeAfter } from "../components/BeforeAfter";
 import { HeroIntro } from "../components/HeroIntro";
 import { Reveal } from "../components/Reveal";
-import { BlueprintGrid } from "../components/BlueprintGrid";
+import { AmbientBubbles } from "../components/AmbientBubbles";
 import { CookieConsent } from "../components/CookieConsent";
 
 
@@ -164,7 +164,7 @@ function Index() {
 
   return (
     <div className="min-h-screen text-foreground">
-      <BlueprintGrid />
+      <AmbientBubbles />
       <HeroIntro />
       <CookieConsent />
       <header className="border-b border-white/10">
