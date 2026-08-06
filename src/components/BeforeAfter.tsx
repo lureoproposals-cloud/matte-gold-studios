@@ -60,13 +60,17 @@ export function BeforeAfter({
           setPos((p) => Math.min(94, p + 6));
         }
       }}
-      className="relative aspect-[4/5] cursor-ew-resize touch-pan-y overflow-hidden bg-[#1a1714] select-none focus-visible:outline-1 focus-visible:outline-ring"
+      className="relative cursor-ew-resize touch-pan-y overflow-hidden bg-[#1a1714] select-none focus-visible:outline-1 focus-visible:outline-ring"
     >
-      {/* PO — finální design (základní vrstva, vpravo) */}
+      {/* PO — finální design (základní vrstva, vpravo).
+          Obrázek je v normálním toku dokumentu (ne absolutně pozicovaný),
+          takže výška karty vychází přímo z něj. Díky tomu se obsah vykreslí
+          i v prohlížečích/WebView, kde selže aspect-ratio na kontejneru
+          s pouze absolutně pozicovanými potomky. */}
       <img
         src={image}
         alt={`Web ${name} — finální design`}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="block aspect-[4/5] w-full object-cover"
         loading="lazy"
         draggable={false}
       />
@@ -81,7 +85,7 @@ export function BeforeAfter({
           src={image}
           alt=""
           aria-hidden
-          className="absolute inset-0 h-full w-full object-cover blur-[3px] brightness-[0.5] contrast-[0.85] grayscale"
+          className="ba-before-img absolute inset-0 h-full w-full object-cover"
           loading="lazy"
           draggable={false}
         />
