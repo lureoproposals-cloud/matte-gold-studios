@@ -516,11 +516,14 @@ function Index() {
             {socialPricing.map((p) => (
               <div
                 key={p.name}
-                className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
+                className="relative flex flex-col border border-white/[0.07] bg-card p-8 opacity-[0.58] saturate-50 md:p-10"
               >
+                <span className="absolute right-6 top-6 inline-flex items-center gap-1.5 border border-white/20 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-mute">
+                  <Lock size={11} strokeWidth={1.5} />
+                  Připravujeme
+                </span>
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-serif text-2xl">{p.name}</h3>
-                  {p.featured && <span className="eyebrow">Doporučeno</span>}
                 </div>
                 <p className="mt-3 text-sm text-mute">{p.tagline}</p>
                 <div className="mt-10 flex items-baseline gap-2">
@@ -536,12 +539,12 @@ function Index() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#kontakt"
-                  className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+                <span
+                  aria-disabled="true"
+                  className="mt-10 cursor-not-allowed border border-white/10 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-mute"
                 >
                   Poptat balíček
-                </a>
+                </span>
               </div>
             ))}
           </div>
