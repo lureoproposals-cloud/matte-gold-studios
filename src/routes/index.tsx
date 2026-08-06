@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
 import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
 import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
 import { BeforeAfter } from "../components/BeforeAfter";
 import { HeroIntro } from "../components/HeroIntro";
 import { Reveal } from "../components/Reveal";
-import { AmbientGlow } from "../components/AmbientGlow";
+import { BlueprintGrid } from "../components/BlueprintGrid";
 import { CookieConsent } from "../components/CookieConsent";
 
 
@@ -164,7 +164,7 @@ function Index() {
 
   return (
     <div className="min-h-screen text-foreground">
-      <AmbientGlow />
+      <BlueprintGrid />
       <HeroIntro />
       <CookieConsent />
       <header className="border-b border-white/10">
