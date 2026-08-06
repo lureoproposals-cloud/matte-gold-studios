@@ -68,7 +68,7 @@ const portfolio = [
 const pricing = [
   {
     name: "Start",
-    price: "2 900",
+    price: "1 900",
     tagline: "Jednostránkový web pro jasnou prezentaci",
     items: [
       "Jednostránkový web s kotvovou navigací",
@@ -79,7 +79,7 @@ const pricing = [
   },
   {
     name: "Standard",
-    price: "7 900",
+    price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
     items: [
       "Až 5 podstránek s vlastní URL",
@@ -252,7 +252,7 @@ function Index() {
           <span className="gold-underline mt-10 w-40" />
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute hero-stagger hero-stagger-3">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
-            odpovídající kvalitě své práce. Bez šablon, bez zbytečností. K webům teď nabízím i měsíční správu sociálních sítí.
+            odpovídající kvalitě své práce. Bez šablon, bez zbytečností.
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
             <Magnetic>
