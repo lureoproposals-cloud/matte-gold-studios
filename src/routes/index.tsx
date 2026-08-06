@@ -7,6 +7,8 @@ import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
 import { BeforeAfter } from "../components/BeforeAfter";
 import { HeroIntro } from "../components/HeroIntro";
 import { Reveal } from "../components/Reveal";
+import { AmbientGlow } from "../components/AmbientGlow";
+import { CookieConsent } from "../components/CookieConsent";
 
 
 
@@ -132,7 +134,7 @@ const process = [
 const faqs = [
   { q: "Musím platit předem?", a: "Ne. Platba se řeší až po schválení návrhu webu — do té doby nic nedlužíte." },
   { q: "Co když se mi návrh nebude líbit?", a: "Návrh společně upravíme, dokud nebude odpovídat vaší představě. Teprve po schválení postupujeme k platbě a dokončení." },
-  { q: "Jak dlouho trvá dodání webu?", a: "Obvykle do 2–3 týdnů od konzultace, podle rozsahu projektu." },
+  { q: "Jak dlouho trvá dodání webu?", a: "Obvykle do 5–7 dnů od konzultace — maximálně týden i u rozsáhlejších webů." },
   { q: "Musím rozumět technice?", a: "Ne. Web vám předám s jednoduchým návodem, jak si sami upravovat texty a obsah." },
   { q: "Co když budu chtít později něco změnit?", a: "Ozvěte se — drobné úpravy vyřešíme, větší rozšíření webu naceníme zvlášť a předem." },
 ];
@@ -161,8 +163,10 @@ function Index() {
 
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
+      <AmbientGlow />
       <HeroIntro />
+      <CookieConsent />
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
           <a href="#" className="font-serif text-lg tracking-tight">
@@ -300,7 +304,7 @@ function Index() {
             <dl className="mt-14 border-t border-white/10 pt-10">
               <div>
                 <dt className="eyebrow">Obvyklé dodání webu</dt>
-                <dd className="mt-3 font-serif text-3xl md:text-4xl">do 2–3 týdnů</dd>
+                <dd className="mt-3 font-serif text-3xl md:text-4xl">do 1 týdne</dd>
               </div>
             </dl>
           </div>
@@ -577,9 +581,15 @@ function Index() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              setFormStatus("sending");
               const formEl = e.currentTarget;
               const data = new FormData(formEl);
+              // Honeypot — boti vyplní skryté pole, odeslání tiše ignorujeme
+              if (data.get("web_url")) {
+                formEl.reset();
+                setFormStatus("sent");
+                return;
+              }
+              setFormStatus("sending");
               data.append("access_key", WEB3FORMS_ACCESS_KEY);
               data.append("subject", "Nová poptávka z webu Lureo");
               try {
@@ -625,6 +635,17 @@ function Index() {
                   <option className="bg-card">15 000 – 40 000 Kč</option>
                   <option className="bg-card">40 000 Kč a více</option>
                 </select>
+              </div>
+              {/* Honeypot proti spamu — skryté mimo obrazovku, reálný uživatel ho nevyplní */}
+              <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="web_url">Webová stránka</label>
+                <input
+                  id="web_url"
+                  name="web_url"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
             </div>
 
