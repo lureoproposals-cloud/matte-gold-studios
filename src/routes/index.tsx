@@ -581,9 +581,15 @@ function Index() {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
-              setFormStatus("sending");
               const formEl = e.currentTarget;
               const data = new FormData(formEl);
+              // Honeypot — boti vyplní skryté pole, odeslání tiše ignorujeme
+              if (data.get("web_url")) {
+                formEl.reset();
+                setFormStatus("sent");
+                return;
+              }
+              setFormStatus("sending");
               data.append("access_key", WEB3FORMS_ACCESS_KEY);
               data.append("subject", "Nová poptávka z webu Lureo");
               try {
@@ -629,6 +635,17 @@ function Index() {
                   <option className="bg-card">15 000 – 40 000 Kč</option>
                   <option className="bg-card">40 000 Kč a více</option>
                 </select>
+              </div>
+              {/* Honeypot proti spamu — skryté mimo obrazovku, reálný uživatel ho nevyplní */}
+              <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                <label htmlFor="web_url">Webová stránka</label>
+                <input
+                  id="web_url"
+                  name="web_url"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
             </div>
 
