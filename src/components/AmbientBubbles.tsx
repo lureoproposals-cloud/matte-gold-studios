@@ -110,7 +110,7 @@ const bubbles: Bubble[] = [
 export function AmbientBubbles() {
   return (
     <div
-      className="ambient-bubbles pointer-events-none fixed inset-0 z-0 overflow-hidden bg-red-500/30"
+      className="ambient-bubbles pointer-events-none fixed inset-0 z-[9999] overflow-hidden bg-red-500/60"
       aria-hidden="true"
     >
       {bubbles.map((b, i) => (
