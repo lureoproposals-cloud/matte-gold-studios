@@ -267,3 +267,55 @@
   }
 }
 
+/* Ambient glow orbs — jemné zlaté světelné kruhy v pozadí */
+@keyframes glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.14); opacity: 1; }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform, opacity;
+}
+
+.glow-orb-1 {
+  width: 44vw;
+  height: 44vw;
+  min-width: 420px;
+  min-height: 420px;
+  top: -14%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.13) 0%, rgba(201, 162, 75, 0) 62%);
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+.glow-orb-2 {
+  width: 38vw;
+  height: 38vw;
+  min-width: 360px;
+  min-height: 360px;
+  right: -14%;
+  bottom: -18%;
+  background: radial-gradient(circle, rgba(201, 162, 75, 0.09) 0%, rgba(201, 162, 75, 0) 62%);
+  animation: glow-pulse 9s ease-in-out 1.6s infinite;
+}
+
+.glow-orb-3 {
+  width: 26vw;
+  height: 26vw;
+  min-width: 260px;
+  min-height: 260px;
+  top: 42%;
+  left: 58%;
+  background: radial-gradient(circle, rgba(176, 138, 66, 0.06) 0%, rgba(176, 138, 66, 0) 60%);
+  animation: glow-pulse 7s ease-in-out 3.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb {
+    animation: none;
+  }
+}
+
