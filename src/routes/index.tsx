@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
 import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
 import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
 import { BeforeAfter } from "../components/BeforeAfter";
 import { HeroIntro } from "../components/HeroIntro";
 import { Reveal } from "../components/Reveal";
-import { AmbientGlow } from "../components/AmbientGlow";
+import { BlueprintGrid } from "../components/BlueprintGrid";
 import { CookieConsent } from "../components/CookieConsent";
 
 
@@ -68,7 +68,7 @@ const portfolio = [
 const pricing = [
   {
     name: "Start",
-    price: "2 900",
+    price: "1 900",
     tagline: "Jednostránkový web pro jasnou prezentaci",
     items: [
       "Jednostránkový web s kotvovou navigací",
@@ -79,7 +79,7 @@ const pricing = [
   },
   {
     name: "Standard",
-    price: "7 900",
+    price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
     items: [
       "Až 5 podstránek s vlastní URL",
@@ -164,7 +164,7 @@ function Index() {
 
   return (
     <div className="min-h-screen text-foreground">
-      <AmbientGlow />
+      <BlueprintGrid />
       <HeroIntro />
       <CookieConsent />
       <header className="border-b border-white/10">
@@ -252,7 +252,7 @@ function Index() {
           <span className="gold-underline mt-10 w-40" />
           <p className="mt-10 max-w-xl text-lg leading-relaxed text-mute hero-stagger hero-stagger-3">
             Malé studentské studio pro majitele menších firem a projektů, kteří chtějí prezentaci
-            odpovídající kvalitě své práce. Bez šablon, bez zbytečností. K webům teď nabízím i měsíční správu sociálních sítí.
+            odpovídající kvalitě své práce. Bez šablon, bez zbytečností.
           </p>
           <div className="mt-12 flex flex-wrap items-center gap-8 hero-stagger hero-stagger-4">
             <Magnetic>
@@ -516,11 +516,14 @@ function Index() {
             {socialPricing.map((p) => (
               <div
                 key={p.name}
-                className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
+                className="relative flex flex-col border border-white/[0.07] bg-card p-8 opacity-[0.58] saturate-50 md:p-10"
               >
+                <span className="absolute right-6 top-6 inline-flex items-center gap-1.5 border border-white/20 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-mute">
+                  <Lock size={11} strokeWidth={1.5} />
+                  Připravujeme
+                </span>
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-serif text-2xl">{p.name}</h3>
-                  {p.featured && <span className="eyebrow">Doporučeno</span>}
                 </div>
                 <p className="mt-3 text-sm text-mute">{p.tagline}</p>
                 <div className="mt-10 flex items-baseline gap-2">
@@ -536,12 +539,12 @@ function Index() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#kontakt"
-                  className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+                <span
+                  aria-disabled="true"
+                  className="mt-10 cursor-not-allowed border border-white/10 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-mute"
                 >
                   Poptat balíček
-                </a>
+                </span>
               </div>
             ))}
           </div>
