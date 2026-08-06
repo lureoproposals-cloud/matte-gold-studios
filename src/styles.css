@@ -303,7 +303,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .ambient-bubbles {
-    animation: bubbles-reveal 2.8s ease 2.4s both;
+    animation: bubbles-reveal 1.5s ease 1s both;
   }
   .bubble-drift-a {
     animation-name: bubble-drift-a;

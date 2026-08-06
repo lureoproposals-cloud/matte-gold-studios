@@ -4,9 +4,9 @@
  * a nezávisle se objevuje / rozpouští (opacity 0 → peak → 0), takže působí,
  * jako by vznikaly a zase mizely. Cykly 18–30 s, různé délky i záporné delays,
  * aby se nikdy nepohybovaly synchronně.
- * Kontejner se sám odhaluje až po skončení HeroIntro (~2,4 s), takže nesoutěží
- * s úvodní animací. S prefers-reduced-motion se pohyb vypne a bubliny zůstanou
- * jako statické, velmi jemné skvrny.
+ * Kontejner se sám odhaluje po skončení HeroIntro (~1 s), takže nesoutěží
+ * s úvodní animací, ale bubliny jsou brzy viditelné. S prefers-reduced-motion
+ * se pohyb vypne a bubliny zůstanou jako statické, jemné skvrny.
  */
 
 type Bubble = {
@@ -26,8 +26,8 @@ const bubbles: Bubble[] = [
       background: "#C9A24B",
       filter: "blur(110px)",
       animationDuration: "26s",
-      animationDelay: "0s",
-      "--peak": "0.10",
+      animationDelay: "-2s",
+      "--peak": "0.24",
     },
   },
   {
@@ -41,8 +41,8 @@ const bubbles: Bubble[] = [
       background: "#A87F45",
       filter: "blur(100px)",
       animationDuration: "30s",
-      animationDelay: "-9s",
-      "--peak": "0.09",
+      animationDelay: "-12s",
+      "--peak": "0.22",
     },
   },
   {
@@ -56,8 +56,8 @@ const bubbles: Bubble[] = [
       background: "#B08D4F",
       filter: "blur(90px)",
       animationDuration: "22s",
-      animationDelay: "-15s",
-      "--peak": "0.08",
+      animationDelay: "-18s",
+      "--peak": "0.20",
     },
   },
   {
@@ -71,8 +71,8 @@ const bubbles: Bubble[] = [
       background: "#C9A24B",
       filter: "blur(80px)",
       animationDuration: "18s",
-      animationDelay: "-5s",
-      "--peak": "0.07",
+      animationDelay: "-7s",
+      "--peak": "0.26",
     },
   },
   {
@@ -86,8 +86,8 @@ const bubbles: Bubble[] = [
       background: "#26201A",
       filter: "blur(120px)",
       animationDuration: "28s",
-      animationDelay: "-12s",
-      "--peak": "0.5",
+      animationDelay: "-9s",
+      "--peak": "0.65",
     },
   },
   {
@@ -101,8 +101,8 @@ const bubbles: Bubble[] = [
       background: "#0D0B09",
       filter: "blur(120px)",
       animationDuration: "24s",
-      animationDelay: "-19s",
-      "--peak": "0.55",
+      animationDelay: "-22s",
+      "--peak": "0.65",
     },
   },
 ];
