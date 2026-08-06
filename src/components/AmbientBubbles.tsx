@@ -27,7 +27,7 @@ const bubbles: Bubble[] = [
       filter: "blur(110px)",
       animationDuration: "26s",
       animationDelay: "-4s",
-      "--peak": "0.85",
+      "--peak": "0.60",
     },
   },
   {
@@ -42,7 +42,7 @@ const bubbles: Bubble[] = [
       filter: "blur(105px)",
       animationDuration: "30s",
       animationDelay: "-8s",
-      "--peak": "0.80",
+      "--peak": "0.55",
     },
   },
   {
@@ -57,7 +57,7 @@ const bubbles: Bubble[] = [
       filter: "blur(90px)",
       animationDuration: "22s",
       animationDelay: "-14s",
-      "--peak": "0.75",
+      "--peak": "0.50",
     },
   },
   {
@@ -72,7 +72,7 @@ const bubbles: Bubble[] = [
       filter: "blur(80px)",
       animationDuration: "18s",
       animationDelay: "-2s",
-      "--peak": "0.90",
+      "--peak": "0.65",
     },
   },
   {
@@ -87,7 +87,7 @@ const bubbles: Bubble[] = [
       filter: "blur(120px)",
       animationDuration: "28s",
       animationDelay: "-10s",
-      "--peak": "0.85",
+      "--peak": "0.80",
     },
   },
   {
@@ -102,7 +102,7 @@ const bubbles: Bubble[] = [
       filter: "blur(120px)",
       animationDuration: "24s",
       animationDelay: "-20s",
-      "--peak": "0.90",
+      "--peak": "0.85",
     },
   },
 ];
