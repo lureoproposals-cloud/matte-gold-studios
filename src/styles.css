@@ -287,23 +287,23 @@
 
 @keyframes bubble-drift-a {
   0% { transform: translateX(-5vw); opacity: 0; }
-  30% { opacity: var(--peak, 0.1); }
+  18% { opacity: var(--peak, 0.1); }
   55% { transform: translateX(3vw); }
-  78% { opacity: var(--peak, 0.1); }
+  82% { opacity: var(--peak, 0.1); }
   100% { transform: translateX(-5vw); opacity: 0; }
 }
 
 @keyframes bubble-drift-b {
   0% { transform: translateX(5vw); opacity: 0; }
-  30% { opacity: var(--peak, 0.1); }
+  18% { opacity: var(--peak, 0.1); }
   55% { transform: translateX(-3vw); }
-  78% { opacity: var(--peak, 0.1); }
+  82% { opacity: var(--peak, 0.1); }
   100% { transform: translateX(5vw); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .ambient-bubbles {
-    animation: bubbles-reveal 2.8s ease 2.4s both;
+    animation: bubbles-reveal 1.5s ease 1s both;
   }
   .bubble-drift-a {
     animation-name: bubble-drift-a;

@@ -163,7 +163,7 @@ function Index() {
 
 
   return (
-    <div className="min-h-screen text-foreground">
+    <div className="relative z-[2] min-h-screen text-foreground">
       <AmbientBubbles />
       <HeroIntro />
       <CookieConsent />
