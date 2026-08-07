@@ -75,6 +75,7 @@ const pricing = [
       "Responzivní design pro mobil i desktop",
       "Kontaktní formulář napojený na váš e-mail",
       "Základní SEO — meta tagy, sitemap, rychlé načítání",
+      "Nastavení Google Search Console a Google Business Profilu",
     ],
   },
   {
@@ -86,6 +87,7 @@ const pricing = [
       "Systém pro úpravu obsahu bez programátora",
       "Napojení analytiky návštěvnosti",
       "Rozšířené SEO — struktura stránek pro Google",
+      "Nastavení Google Search Console a Google Business Profilu",
       "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
     ],
     featured: true,
