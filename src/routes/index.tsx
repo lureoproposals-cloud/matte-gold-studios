@@ -75,6 +75,7 @@ const pricing = [
       "Responzivní design pro mobil i desktop",
       "Kontaktní formulář napojený na váš e-mail",
       "Základní SEO — meta tagy, sitemap, rychlé načítání",
+      "Nastavení Google Search Console a Google Business Profilu",
     ],
   },
   {
