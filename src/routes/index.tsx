@@ -87,6 +87,7 @@ const pricing = [
       "Systém pro úpravu obsahu bez programátora",
       "Napojení analytiky návštěvnosti",
       "Rozšířené SEO — struktura stránek pro Google",
+      "Nastavení Google Search Console a Google Business Profilu",
       "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
     ],
     featured: true,
