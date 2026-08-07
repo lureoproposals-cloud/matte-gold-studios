@@ -36,7 +36,7 @@ const services = [
   {
     title: "Správa sociálních sítí",
     desc: "Pravidelná správa Instagramu a Facebooku pro firmy, které mají web a chtějí konzistentní online přítomnost. Měsíční plánování, jednotný vizuální styl a přehled o tom, co vaše publikum zaujme.",
-    soon: false,
+    soon: true,
   },
 ];
 
