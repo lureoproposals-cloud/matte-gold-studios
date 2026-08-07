@@ -8,11 +8,9 @@
  * s úvodní animací, ale bubliny jsou brzy viditelné. S prefers-reduced-motion
  * se pohyb vypne a bubliny zůstanou jako statické, jemné skvrny.
  *
- * Mobilní hodnoty (--m-*): velikosti stejné ve vw jako desktop (bublina tak
- * pokryje stejný podíl šířky obrazovky), blur přepočtený poměrem 390/1280 ≈ 0.305,
- * aby poměr blur/průměr a tedy měkkost okraje odpovídal desktopu. Peaky jsou
- * ~1.3× desktop — kompenzace menší fyzické plochy displeje a tlumenějšího
- * mobilního renderingu blur vrstev, aby teplota/jas seděla na desktop verzi.
+ * Mobilní hodnoty (--m-*): velikosti zůstávají naladěné pro úzký viewport,
+ * ale měkký okraj vytváří radiální gradient místo filter: blur(). Tím se mobilní
+ * vykreslení vyhne problematické GPU kompozici v Samsung Internet / WebView.
  */
 
 type BubbleVars =
@@ -21,7 +19,7 @@ type BubbleVars =
   | "--m-min"
   | "--m-w"
   | "--m-h"
-  | "--m-blur";
+  | "--m-color";
 
 type Bubble = {
   className: string;
@@ -46,7 +44,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.16",
       "--m-w": "62vw",
       "--m-h": "62vw",
-      "--m-blur": "82px",
+      "--m-color": "#C9A24B",
     },
   },
   {
@@ -66,7 +64,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.15",
       "--m-w": "56vw",
       "--m-h": "56vw",
-      "--m-blur": "76px",
+      "--m-color": "#A87F45",
     },
   },
   {
@@ -86,7 +84,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.14",
       "--m-w": "46vw",
       "--m-h": "46vw",
-      "--m-blur": "66px",
+      "--m-color": "#B08D4F",
     },
   },
   {
@@ -106,7 +104,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.16",
       "--m-w": "38vw",
       "--m-h": "38vw",
-      "--m-blur": "56px",
+      "--m-color": "#C9A24B",
     },
   },
   {
@@ -126,7 +124,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.24",
       "--m-w": "65vw",
       "--m-h": "49vw",
-      "--m-blur": "78px",
+      "--m-color": "#26201A",
     },
   },
   {
@@ -146,7 +144,7 @@ const bubbles: Bubble[] = [
       "--m-min": "0.23",
       "--m-w": "47vw",
       "--m-h": "39vw",
-      "--m-blur": "78px",
+      "--m-color": "#0D0B09",
     },
   },
 ];

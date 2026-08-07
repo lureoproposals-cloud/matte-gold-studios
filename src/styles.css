@@ -345,11 +345,10 @@
   }
 }
 
-/* Mobilní ladění bublin: vw velikosti necháváme stejné jako na desktopu
-   (bublina pokryje stejný podíl šířky), blur přepočítáváme poměrem šířek
-   viewportů (~390/1280), aby měkkost okraje odpovídala. Peak opacity je
-   mírně vyšší než desktop — kompenzace menší fyzické plochy displeje.
-   (!important přebije inline styly komponenty.) */
+/* Mobilní bubliny používají radiální gradient místo filter: blur(). Samsung
+   Internet a starší Android WebView mohou zahodit celou vrstvu při kombinaci
+   velkého blur filtru, fixed kontejneru a záporného z-indexu. Gradient vytvoří
+   stejný měkký přechod bez samostatné filtrované kompoziční vrstvy. */
 @media (max-width: 768px) {
   /* Static declarations are intentional fallbacks for Samsung Internet and
      older Android WebViews: if either animation is unsupported, the container
@@ -362,10 +361,10 @@
     width: var(--m-w) !important;
     height: var(--m-h) !important;
     opacity: var(--m-min);
-    filter: blur(var(--m-blur)) !important;
-    -webkit-filter: blur(var(--m-blur)) !important;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    background: radial-gradient(circle, var(--m-color) 0%, transparent 72%) !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    will-change: auto;
   }
 }
 
