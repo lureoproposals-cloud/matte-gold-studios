@@ -306,17 +306,17 @@
 
 @keyframes bubble-drift-a {
   0% { transform: translateX(-5vw); opacity: 0; }
-  18% { opacity: var(--peak, 0.1); }
+  18% { opacity: var(--active-peak, var(--peak, 0.1)); }
   55% { transform: translateX(3vw); }
-  82% { opacity: var(--peak, 0.1); }
+  82% { opacity: var(--active-peak, var(--peak, 0.1)); }
   100% { transform: translateX(-5vw); opacity: 0; }
 }
 
 @keyframes bubble-drift-b {
   0% { transform: translateX(5vw); opacity: 0; }
-  18% { opacity: var(--peak, 0.1); }
+  18% { opacity: var(--active-peak, var(--peak, 0.1)); }
   55% { transform: translateX(-3vw); }
-  82% { opacity: var(--peak, 0.1); }
+  82% { opacity: var(--active-peak, var(--peak, 0.1)); }
   100% { transform: translateX(5vw); opacity: 0; }
 }
 
@@ -352,10 +352,21 @@
    snížíme jak vw velikost, tak px blur na hodnoty s podobným poměrem jako
    má desktop. (!important přebije inline styly komponenty.) */
 @media (max-width: 768px) {
+  /* Static declarations are intentional fallbacks for Samsung Internet and
+     older Android WebViews: if either animation is unsupported, the container
+     and bubbles remain visibly rendered instead of staying at opacity: 0. */
+  .ambient-bubbles {
+    opacity: 1;
+  }
   .bubble {
+    --active-peak: var(--m-peak);
     width: var(--m-w) !important;
     height: var(--m-h) !important;
+    opacity: var(--m-min);
     filter: blur(var(--m-blur)) !important;
+    -webkit-filter: blur(var(--m-blur)) !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
