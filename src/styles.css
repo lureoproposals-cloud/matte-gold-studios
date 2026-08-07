@@ -365,8 +365,6 @@
     filter: none !important;
     -webkit-filter: none !important;
     will-change: auto;
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
   }
 }
 
