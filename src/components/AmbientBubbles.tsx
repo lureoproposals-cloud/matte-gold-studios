@@ -7,6 +7,12 @@
  * Kontejner se sám odhaluje po skončení HeroIntro (~1 s), takže nesoutěží
  * s úvodní animací, ale bubliny jsou brzy viditelné. S prefers-reduced-motion
  * se pohyb vypne a bubliny zůstanou jako statické, jemné skvrny.
+ *
+ * Mobilní hodnoty (--m-*): velikosti stejné ve vw jako desktop (bublina tak
+ * pokryje stejný podíl šířky obrazovky), blur přepočtený poměrem 390/1280 ≈ 0.305,
+ * aby poměr blur/průměr a tedy měkkost okraje odpovídal desktopu. Peaky jsou
+ * ~1.3× desktop — kompenzace menší fyzické plochy displeje a tlumenějšího
+ * mobilního renderingu blur vrstev, aby teplota/jas seděla na desktop verzi.
  */
 
 type BubbleVars =
@@ -36,10 +42,10 @@ const bubbles: Bubble[] = [
       animationDuration: "26s",
       animationDelay: "-4s",
       "--peak": "0.30",
-      "--m-peak": "0.60",
-      "--m-min": "0.24",
-      "--m-w": "30vw",
-      "--m-h": "30vw",
+      "--m-peak": "0.40",
+      "--m-min": "0.17",
+      "--m-w": "36vw",
+      "--m-h": "36vw",
       "--m-blur": "34px",
     },
   },
@@ -56,11 +62,11 @@ const bubbles: Bubble[] = [
       animationDuration: "30s",
       animationDelay: "-8s",
       "--peak": "0.28",
-      "--m-peak": "0.56",
-      "--m-min": "0.22",
-      "--m-w": "26vw",
-      "--m-h": "26vw",
-      "--m-blur": "28px",
+      "--m-peak": "0.37",
+      "--m-min": "0.16",
+      "--m-w": "32vw",
+      "--m-h": "32vw",
+      "--m-blur": "32px",
     },
   },
   {
@@ -76,11 +82,11 @@ const bubbles: Bubble[] = [
       animationDuration: "22s",
       animationDelay: "-14s",
       "--peak": "0.25",
-      "--m-peak": "0.50",
-      "--m-min": "0.20",
-      "--m-w": "22vw",
-      "--m-h": "22vw",
-      "--m-blur": "24px",
+      "--m-peak": "0.33",
+      "--m-min": "0.14",
+      "--m-w": "26vw",
+      "--m-h": "26vw",
+      "--m-blur": "28px",
     },
   },
   {
@@ -96,11 +102,11 @@ const bubbles: Bubble[] = [
       animationDuration: "18s",
       animationDelay: "-2s",
       "--peak": "0.30",
-      "--m-peak": "0.60",
-      "--m-min": "0.24",
-      "--m-w": "18vw",
-      "--m-h": "18vw",
-      "--m-blur": "20px",
+      "--m-peak": "0.40",
+      "--m-min": "0.17",
+      "--m-w": "22vw",
+      "--m-h": "22vw",
+      "--m-blur": "24px",
     },
   },
   {
@@ -116,11 +122,11 @@ const bubbles: Bubble[] = [
       animationDuration: "28s",
       animationDelay: "-10s",
       "--peak": "0.45",
-      "--m-peak": "0.82",
-      "--m-min": "0.36",
-      "--m-w": "34vw",
-      "--m-h": "26vw",
-      "--m-blur": "38px",
+      "--m-peak": "0.58",
+      "--m-min": "0.25",
+      "--m-w": "40vw",
+      "--m-h": "30vw",
+      "--m-blur": "37px",
     },
   },
   {
@@ -136,11 +142,11 @@ const bubbles: Bubble[] = [
       animationDuration: "24s",
       animationDelay: "-20s",
       "--peak": "0.42",
-      "--m-peak": "0.78",
-      "--m-min": "0.34",
-      "--m-w": "24vw",
-      "--m-h": "20vw",
-      "--m-blur": "32px",
+      "--m-peak": "0.55",
+      "--m-min": "0.24",
+      "--m-w": "29vw",
+      "--m-h": "24vw",
+      "--m-blur": "37px",
     },
   },
 ];
