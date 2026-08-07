@@ -345,12 +345,11 @@
   }
 }
 
-/* Mobilní ladění bublin: velikosti jsou ve vw, takže na ~390px šířce je bublina
-   v absolutních pixelech mnohem menší, zatímco blur zůstává fixní v px — poměr
-   blur/velikost pak na mobilu vychází několikanásobně vyšší než na desktopu
-   a pozadí působí jako silný difúzní výplach. Na mobilu proto každé bublině
-   snížíme jak vw velikost, tak px blur na hodnoty s podobným poměrem jako
-   má desktop. (!important přebije inline styly komponenty.) */
+/* Mobilní ladění bublin: vw velikosti necháváme stejné jako na desktopu
+   (bublina pokryje stejný podíl šířky), blur přepočítáváme poměrem šířek
+   viewportů (~390/1280), aby měkkost okraje odpovídala. Peak opacity je
+   mírně vyšší než desktop — kompenzace menší fyzické plochy displeje.
+   (!important přebije inline styly komponenty.) */
 @media (max-width: 768px) {
   /* Static declarations are intentional fallbacks for Samsung Internet and
      older Android WebViews: if either animation is unsupported, the container
