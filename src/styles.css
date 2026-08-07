@@ -267,6 +267,25 @@
   }
 }
 
+/* Mobilní fallback pro hero nadpis: na řadě mobilních prohlížečů (starší WebKit,
+   Samsung Internet, WebView) je kombinace background-clip: text + animovaného
+   background-position nespolehlivá — nadpis se může vykreslit tmavý/téměř
+   neviditelný. Na mobilu proto gradientový "light sweep" vypínáme a text
+   renderujeme plně slonovou kostí; zlaté zvýrazněné slovo zůstává zlaté.
+   Pravidlo je až za desktop verzí, takže na mobilu vyhrává v kaskádě. */
+@media (prefers-reduced-motion: no-preference) and (max-width: 768px) {
+  .hero-sweep {
+    background-image: none;
+    background-position: 0 0;
+    color: var(--ivory);
+    -webkit-text-fill-color: var(--ivory);
+    animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 2.25s both;
+  }
+  .hero-sweep em {
+    -webkit-text-fill-color: var(--gold);
+  }
+}
+
 /* Ambient bubbles — matné rozmazané bubliny (zlato/bronz/antracit) fixované za obsahem.
    Kontejner se odhalí až po HeroIntro; každá bublina driftuje do strany a současně
    se objevuje a rozpouští (opacity 0 → --peak → 0). */
