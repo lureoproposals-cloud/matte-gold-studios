@@ -9,7 +9,13 @@
  * se pohyb vypne a bubliny zůstanou jako statické, jemné skvrny.
  */
 
-type BubbleVars = "--peak" | "--m-w" | "--m-h" | "--m-blur";
+type BubbleVars =
+  | "--peak"
+  | "--m-peak"
+  | "--m-min"
+  | "--m-w"
+  | "--m-h"
+  | "--m-blur";
 
 type Bubble = {
   className: string;
@@ -30,6 +36,8 @@ const bubbles: Bubble[] = [
       animationDuration: "26s",
       animationDelay: "-4s",
       "--peak": "0.30",
+      "--m-peak": "0.60",
+      "--m-min": "0.24",
       "--m-w": "30vw",
       "--m-h": "30vw",
       "--m-blur": "34px",
@@ -48,6 +56,8 @@ const bubbles: Bubble[] = [
       animationDuration: "30s",
       animationDelay: "-8s",
       "--peak": "0.28",
+      "--m-peak": "0.56",
+      "--m-min": "0.22",
       "--m-w": "26vw",
       "--m-h": "26vw",
       "--m-blur": "28px",
@@ -66,6 +76,8 @@ const bubbles: Bubble[] = [
       animationDuration: "22s",
       animationDelay: "-14s",
       "--peak": "0.25",
+      "--m-peak": "0.50",
+      "--m-min": "0.20",
       "--m-w": "22vw",
       "--m-h": "22vw",
       "--m-blur": "24px",
@@ -84,6 +96,8 @@ const bubbles: Bubble[] = [
       animationDuration: "18s",
       animationDelay: "-2s",
       "--peak": "0.30",
+      "--m-peak": "0.60",
+      "--m-min": "0.24",
       "--m-w": "18vw",
       "--m-h": "18vw",
       "--m-blur": "20px",
@@ -102,6 +116,8 @@ const bubbles: Bubble[] = [
       animationDuration: "28s",
       animationDelay: "-10s",
       "--peak": "0.45",
+      "--m-peak": "0.82",
+      "--m-min": "0.36",
       "--m-w": "34vw",
       "--m-h": "26vw",
       "--m-blur": "38px",
@@ -120,6 +136,8 @@ const bubbles: Bubble[] = [
       animationDuration: "24s",
       animationDelay: "-20s",
       "--peak": "0.42",
+      "--m-peak": "0.78",
+      "--m-min": "0.34",
       "--m-w": "24vw",
       "--m-h": "20vw",
       "--m-blur": "32px",
