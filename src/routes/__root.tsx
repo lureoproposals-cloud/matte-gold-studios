@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "ljbPXejZrISAHxyD-NtfgoHS33xYyNh-efu6BvW8CyE" },
       { title: "Lureo — Weby pro malé firmy" },
       { name: "description", content: "Studentské studio pro tvorbu webů na míru. Weby pro menší projekty a firmy." },
       { property: "og:title", content: "Lureo — Weby pro malé firmy" },
