@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
-import ucetniScreenshot from "../assets/ucetni-sluzby.png.asset.json";
-import autoservisScreenshot from "../assets/autoservis-koncept.png.asset.json";
-import burgerScreenshot from "../assets/burger-koncept.png.asset.json";
+import ucetniScreenshot from "../assets/ucetni-sluzby.png";
+import autoservisScreenshot from "../assets/autoservis-koncept.png";
+import burgerScreenshot from "../assets/burger-koncept.png";
 import { BeforeAfter } from "../components/BeforeAfter";
 import { HeroIntro } from "../components/HeroIntro";
 import { Reveal } from "../components/Reveal";
@@ -47,21 +47,21 @@ const portfolio = [
     meta: "2026",
     description: "Web pro OSVČ účetní — kompletní prezentace služeb, FAQ a kontaktní formulář.",
     link: "https://lk-ucetnictvi.cz",
-    image: ucetniScreenshot.url,
+    image: ucetniScreenshot,
   },
   {
     name: "Koncept: web pro burger bistro",
     tag: "Koncept",
     meta: "2026",
     description: "Ukázkový projekt — responzivní web s menu, informacemi o rozvozu a kontaktními údaji.",
-    image: burgerScreenshot.url,
+    image: burgerScreenshot,
   },
   {
     name: "Koncept: web pro autoservis",
     tag: "Koncept",
     meta: "2026",
     description: "Ukázkový projekt — prezentace služeb, sekce o firmě a kontaktní formulář.",
-    image: autoservisScreenshot.url,
+    image: autoservisScreenshot,
   },
 ];
 
