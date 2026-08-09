@@ -21,8 +21,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Studentské studio pro tvorbu webů na míru. Rychlé dodání, transparentní ceny, přímá komunikace." },
       { property: "og:title", content: "Lureo — Weby pro malé firmy a projekty" },
       { property: "og:description", content: "Studentské studio pro tvorbu webů na míru. Rychlé dodání, transparentní ceny, přímá komunikace." },
-      { property: "og:image", content: "https://matte-gold-studios.lovable.app/__l5e/assets-v1/35e62c1f-b18c-4ccf-b7ac-46b0447ccc76/og-lureo.png" },
-      { name: "twitter:image", content: "https://matte-gold-studios.lovable.app/__l5e/assets-v1/35e62c1f-b18c-4ccf-b7ac-46b0447ccc76/og-lureo.png" },
+      { property: "og:image", content: "https://webovky-lureo.cz/og-lureo.png" },
+      { name: "twitter:image", content: "https://webovky-lureo.cz/og-lureo.png" },
     ],
   }),
 });
