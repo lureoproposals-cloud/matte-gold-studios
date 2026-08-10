@@ -77,7 +77,9 @@ const pricing = [
       "Základní SEO — meta tagy, sitemap, rychlé načítání",
       "Nastavení Google Search Console a Google Business Profilu",
     ],
+  },
   {
+
     name: "Balíček Pobyt",
     price: "2 400",
     tagline: "Pro chaty, chalupy a Airbnb ubytování",
