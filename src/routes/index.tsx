@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Lock, Menu, X } from "lucide-react";
+import { ArrowUpRight, Lock, Menu, Video, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png";
 import autoservisScreenshot from "../assets/autoservis-koncept.png";
 import burgerScreenshot from "../assets/burger-koncept.png";
@@ -79,6 +79,21 @@ const pricing = [
     ],
   },
   {
+
+    name: "Balíček Pobyt",
+    price: "2 400",
+    tagline: "Pro chaty, chalupy a Airbnb ubytování",
+    icon: Video,
+    items: [
+      "Vše z balíčku Start — jednostránkový web, kontakt, ceník i podmínky a reference",
+      "POV video prohlídka interiéru jako hero sekce místo statické fotky (autoplay, muted, smyčka)",
+      "Nemáte video? Automatický Ken Burns efekt — pomalý zoom a pan mezi fotkami interiéru",
+      "Galerie fotek — exteriér, interiér i okolí",
+      "Kontaktní a rezervační formulář napojený na váš e-mail",
+    ],
+  },
+  {
+
     name: "Standard",
     price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
@@ -473,16 +488,20 @@ function Index() {
 
         <div className="mt-16">
           <h3 className="font-serif text-2xl">Weby — jednorázová realizace</h3>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {pricing.map((p) => (
               <div
                 key={p.name}
                 className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
               >
-                <div className="flex items-baseline justify-between">
-                  <h3 className="font-serif text-2xl">{p.name}</h3>
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="flex items-baseline gap-2.5 font-serif text-2xl">
+                    {p.icon && <p.icon size={18} strokeWidth={1.5} className="translate-y-0.5 text-gold" />}
+                    {p.name}
+                  </h3>
                   {p.featured && <span className="eyebrow">Doporučeno</span>}
                 </div>
+
                 <p className="mt-3 text-sm text-mute">{p.tagline}</p>
                 <div className="mt-10 flex items-baseline gap-2">
                   <span className="font-serif text-5xl">{p.price}</span>
