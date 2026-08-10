@@ -77,8 +77,21 @@ const pricing = [
       "Základní SEO — meta tagy, sitemap, rychlé načítání",
       "Nastavení Google Search Console a Google Business Profilu",
     ],
+  {
+    name: "Balíček Pobyt",
+    price: "2 400",
+    tagline: "Pro chaty, chalupy a Airbnb ubytování",
+    icon: Video,
+    items: [
+      "Vše z balíčku Start — jednostránkový web, kontakt, ceník i podmínky a reference",
+      "POV video prohlídka interiéru jako hero sekce místo statické fotky (autoplay, muted, smyčka)",
+      "Nemáte video? Automatický Ken Burns efekt — pomalý zoom a pan mezi fotkami interiéru",
+      "Galerie fotek — exteriér, interiér i okolí",
+      "Kontaktní a rezervační formulář napojený na váš e-mail",
+    ],
   },
   {
+
     name: "Standard",
     price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
