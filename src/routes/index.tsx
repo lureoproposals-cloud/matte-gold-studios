@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Lock, Menu, Video, X } from "lucide-react";
+import { ArrowUpRight, Home, Lock, Menu, Video, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png";
 import autoservisScreenshot from "../assets/autoservis-koncept.png";
 import burgerScreenshot from "../assets/burger-koncept.png";
