@@ -548,12 +548,10 @@ function Index() {
             Moderní prezentace pro chaty, chalupy a krátkodobé ubytování. Web, který návštěvníkům pomůže
             si váš prostor představit ještě před rezervací.
           </p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="flex flex-col gap-6">
-              <StayCard pkg={stayPackages[0]} />
-              <StayCard pkg={stayPackages[1]} compact />
-            </div>
-            <StayCard pkg={stayPackages[2]} />
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {stayPackages.map((pkg) => (
+              <StayCard key={pkg.name} pkg={pkg} />
+            ))}
           </div>
         </div>
 
