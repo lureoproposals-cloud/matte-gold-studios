@@ -111,19 +111,6 @@ const stayPackages = [
     cta: "Chci web pro svou chatu",
   },
   {
-    name: "Cinematic prohlídka",
-    price: "+500",
-    tagline: "Krátká cinematic prezentace interiéru nebo exteriéru",
-    icon: Video,
-    note: "doplněk k webu",
-    items: [
-      "Zachycuje atmosféru ubytování lépe než statické fotky",
-      "Vhodné jako hero sekce webu nebo samostatný klip",
-    ],
-    cta: "Chci cinematic prohlídku",
-    addon: true,
-  },
-  {
     name: "Web + Cinematic",
     price: "3 000",
     tagline: "Kompletní prezentace — web s vloženou cinematic prohlídkou",
@@ -131,6 +118,8 @@ const stayPackages = [
     items: [
       "Vše z balíčku Web pro chatu / chalupu",
       "Cinematic prohlídka interiéru nebo exteriéru",
+      "Zachycuje atmosféru ubytování lépe než statické fotky",
+      "Krátká prezentace vhodná jako hero sekce webu i samostatný klip",
       "Cinematic prezentace vložená přímo do webu",
     ],
     cta: "Chci kompletní prezentaci",
