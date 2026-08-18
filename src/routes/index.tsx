@@ -873,3 +873,39 @@ function Magnetic({ children }: { children: ReactNode }) {
     </span>
   );
 }
+
+function StayCard({ pkg, compact }: { pkg: typeof stayPackages[number]; compact?: boolean }) {
+  const Icon = pkg.icon;
+  return (
+    <div className={`card-hover flex flex-col border border-white/10 bg-card ${compact ? "p-6 md:p-8" : "p-8 md:p-10"}`}>
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="flex items-baseline gap-2.5 font-serif text-2xl">
+          {Icon && <Icon size={18} strokeWidth={1.5} className="translate-y-0.5 text-gold" />}
+          {pkg.name}
+        </h3>
+        {pkg.featured && <span className="eyebrow">Doporučeno</span>}
+      </div>
+      <p className="mt-3 text-sm text-mute">{pkg.tagline}</p>
+      <div className="mt-10 flex items-baseline gap-2">
+        <span className="font-serif text-5xl">{pkg.price}</span>
+        <span className="text-sm text-mute">Kč</span>
+      </div>
+      {pkg.note && <p className="mt-2 text-xs text-mute">{pkg.note}</p>}
+      <div className="my-8 h-px bg-white/10" />
+      <ul className="space-y-3 text-sm">
+        {pkg.items.map((it) => (
+          <li key={it} className="flex gap-3">
+            <span className="mt-2 h-px w-3 shrink-0 bg-white/40" />
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="#kontakt"
+        className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+      >
+        {pkg.cta}
+      </a>
+    </div>
+  );
+}
