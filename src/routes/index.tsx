@@ -79,21 +79,6 @@ const pricing = [
     ],
   },
   {
-
-    name: "Balíček Pobyt",
-    price: "2 400",
-    tagline: "Pro chaty, chalupy a Airbnb ubytování",
-    icon: Video,
-    items: [
-      "Vše z balíčku Start — jednostránkový web, kontakt, ceník i podmínky a reference",
-      "POV video prohlídka interiéru jako hero sekce místo statické fotky (autoplay, muted, smyčka)",
-      "Nemáte video? Automatický Ken Burns efekt — pomalý zoom a pan mezi fotkami interiéru",
-      "Galerie fotek — exteriér, interiér i okolí",
-      "Kontaktní a rezervační formulář napojený na váš e-mail",
-    ],
-  },
-  {
-
     name: "Standard",
     price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
@@ -105,6 +90,50 @@ const pricing = [
       "Nastavení Google Search Console a Google Business Profilu",
       "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
     ],
+    featured: true,
+  },
+];
+
+const stayPackages = [
+  {
+    name: "Web pro chatu / chalupu",
+    price: "2 500",
+    tagline: "Moderní webová prezentace vytvořená pro chaty, chalupy a Airbnb ubytování",
+    icon: Home,
+    items: [
+      "Moderní design přizpůsobený ubytování",
+      "Responzivní zobrazení pro mobil i desktop",
+      "Galerie fotografií interiéru, exteriéru i okolí",
+      "Informace o ubytování, vybavení a lokalitě",
+      "Kalendář dostupných termínů (obsazenost / volné termíny)",
+      "Kontaktní a rezervační formulář",
+    ],
+    cta: "Chci web pro svou chatu",
+  },
+  {
+    name: "Cinematic prohlídka",
+    price: "+500",
+    tagline: "Krátká cinematic prezentace interiéru nebo exteriéru",
+    icon: Video,
+    note: "doplněk k webu",
+    items: [
+      "Zachycuje atmosféru ubytování lépe než statické fotky",
+      "Vhodné jako hero sekce webu nebo samostatný klip",
+    ],
+    cta: "Chci cinematic prohlídku",
+    addon: true,
+  },
+  {
+    name: "Web + Cinematic",
+    price: "3 000",
+    tagline: "Kompletní prezentace — web s vloženou cinematic prohlídkou",
+    icon: Video,
+    items: [
+      "Vše z balíčku Web pro chatu / chalupu",
+      "Cinematic prohlídka interiéru nebo exteriéru",
+      "Cinematic prezentace vložená přímo do webu",
+    ],
+    cta: "Chci kompletní prezentaci",
     featured: true,
   },
 ];
