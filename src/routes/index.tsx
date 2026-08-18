@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ArrowUpRight, Lock, Menu, Video, X } from "lucide-react";
+import { ArrowUpRight, Home, Lock, Menu, Video, X } from "lucide-react";
 import ucetniScreenshot from "../assets/ucetni-sluzby.png";
 import autoservisScreenshot from "../assets/autoservis-koncept.png";
 import burgerScreenshot from "../assets/burger-koncept.png";
@@ -79,21 +79,6 @@ const pricing = [
     ],
   },
   {
-
-    name: "Balíček Pobyt",
-    price: "2 400",
-    tagline: "Pro chaty, chalupy a Airbnb ubytování",
-    icon: Video,
-    items: [
-      "Vše z balíčku Start — jednostránkový web, kontakt, ceník i podmínky a reference",
-      "POV video prohlídka interiéru jako hero sekce místo statické fotky (autoplay, muted, smyčka)",
-      "Nemáte video? Automatický Ken Burns efekt — pomalý zoom a pan mezi fotkami interiéru",
-      "Galerie fotek — exteriér, interiér i okolí",
-      "Kontaktní a rezervační formulář napojený na váš e-mail",
-    ],
-  },
-  {
-
     name: "Standard",
     price: "5 900",
     tagline: "Web do 5 podstránek s možností úprav obsahu",
@@ -105,6 +90,50 @@ const pricing = [
       "Nastavení Google Search Console a Google Business Profilu",
       "Technická podpora 3 měsíce — opravy chyb a drobné úpravy po předání",
     ],
+    featured: true,
+  },
+];
+
+const stayPackages = [
+  {
+    name: "Web pro chatu / chalupu",
+    price: "2 500",
+    tagline: "Moderní webová prezentace vytvořená pro chaty, chalupy a Airbnb ubytování",
+    icon: Home,
+    items: [
+      "Moderní design přizpůsobený ubytování",
+      "Responzivní zobrazení pro mobil i desktop",
+      "Galerie fotografií interiéru, exteriéru i okolí",
+      "Informace o ubytování, vybavení a lokalitě",
+      "Kalendář dostupných termínů (obsazenost / volné termíny)",
+      "Kontaktní a rezervační formulář",
+    ],
+    cta: "Chci web pro svou chatu",
+  },
+  {
+    name: "Cinematic prohlídka",
+    price: "+500",
+    tagline: "Krátká cinematic prezentace interiéru nebo exteriéru",
+    icon: Video,
+    note: "doplněk k webu",
+    items: [
+      "Zachycuje atmosféru ubytování lépe než statické fotky",
+      "Vhodné jako hero sekce webu nebo samostatný klip",
+    ],
+    cta: "Chci cinematic prohlídku",
+    addon: true,
+  },
+  {
+    name: "Web + Cinematic",
+    price: "3 000",
+    tagline: "Kompletní prezentace — web s vloženou cinematic prohlídkou",
+    icon: Video,
+    items: [
+      "Vše z balíčku Web pro chatu / chalupu",
+      "Cinematic prohlídka interiéru nebo exteriéru",
+      "Cinematic prezentace vložená přímo do webu",
+    ],
+    cta: "Chci kompletní prezentaci",
     featured: true,
   },
 ];
@@ -495,10 +524,7 @@ function Index() {
                 className="card-hover flex flex-col border border-white/10 bg-card p-8 md:p-10"
               >
                 <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="flex items-baseline gap-2.5 font-serif text-2xl">
-                    {p.icon && <p.icon size={18} strokeWidth={1.5} className="translate-y-0.5 text-gold" />}
-                    {p.name}
-                  </h3>
+                  <h3 className="font-serif text-2xl">{p.name}</h3>
                   {p.featured && <span className="eyebrow">Doporučeno</span>}
                 </div>
 
@@ -527,7 +553,58 @@ function Index() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-20">
+          <h3 className="font-serif text-2xl">Weby pro ubytování — chaty, chalupy a Airbnb</h3>
+          <p className="mt-3 max-w-2xl text-sm text-mute">
+            Moderní prezentace pro chaty, chalupy a krátkodobé ubytování. Web, který návštěvníkům pomůže
+            si váš prostor představit ještě před rezervací.
+          </p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="flex flex-col gap-6">
+              <StayCard pkg={stayPackages[0]} />
+              <StayCard pkg={stayPackages[1]} compact />
+            </div>
+            <StayCard pkg={stayPackages[2]} />
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-white/10 pt-10">
+          <h3 className="font-serif text-xl">Potřebujete něco později změnit?</h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-mute">
+            Dodatečné úpravy od 500 Kč / úprava. Žádný povinný měsíční poplatek za správu. Pokud budete
+            chtít web později upravit, stačí napsat. Platíte pouze za úpravu, kterou potřebujete.
+          </p>
+        </div>
+
+        <div className="mt-20">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h3 className="font-serif text-3xl leading-tight md:text-4xl">
+                Fotografie ukážou prostor. Cinematic prohlídka ukáže atmosféru.
+              </h3>
+              <p className="mt-4 text-base leading-relaxed text-mute">
+                Krátká cinematic prezentace interiéru nebo exteriéru pomůže návštěvníkům lépe si představit
+                vaše ubytování ještě před rezervací.
+              </p>
+              <a
+                href="#kontakt"
+                className="mt-8 inline-block border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+              >
+                Nezávazně probrat projekt
+              </a>
+            </div>
+            <div className="relative flex aspect-video items-center justify-center overflow-hidden border border-white/10 bg-card">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-background/80">
+                <Video size={28} strokeWidth={1.5} className="text-gold" />
+              </div>
+              <p className="absolute bottom-4 left-4 text-[0.65rem] uppercase tracking-[0.24em] text-mute">
+                Ukázka cinematic prohlídky
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20">
           <h3 className="font-serif text-2xl">Správa sociálních sítí — měsíční služba</h3>
           <p className="mt-3 max-w-2xl text-sm text-mute">
             Samostatná měsíční péče pro firmy, které už web mají a chtějí pravidelnou přítomnost na
@@ -794,5 +871,41 @@ function Magnetic({ children }: { children: ReactNode }) {
     >
       {children}
     </span>
+  );
+}
+
+function StayCard({ pkg, compact }: { pkg: typeof stayPackages[number]; compact?: boolean }) {
+  const Icon = pkg.icon;
+  return (
+    <div className={`card-hover flex flex-col border border-white/10 bg-card ${compact ? "p-6 md:p-8" : "p-8 md:p-10"}`}>
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="flex items-baseline gap-2.5 font-serif text-2xl">
+          {Icon && <Icon size={18} strokeWidth={1.5} className="translate-y-0.5 text-gold" />}
+          {pkg.name}
+        </h3>
+        {pkg.featured && <span className="eyebrow">Doporučeno</span>}
+      </div>
+      <p className="mt-3 text-sm text-mute">{pkg.tagline}</p>
+      <div className="mt-10 flex items-baseline gap-2">
+        <span className="font-serif text-5xl">{pkg.price}</span>
+        <span className="text-sm text-mute">Kč</span>
+      </div>
+      {pkg.note && <p className="mt-2 text-xs text-mute">{pkg.note}</p>}
+      <div className="my-8 h-px bg-white/10" />
+      <ul className="space-y-3 text-sm">
+        {pkg.items.map((it) => (
+          <li key={it} className="flex gap-3">
+            <span className="mt-2 h-px w-3 shrink-0 bg-white/40" />
+            <span>{it}</span>
+          </li>
+        ))}
+      </ul>
+      <a
+        href="#kontakt"
+        className="mt-10 border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.22em] text-foreground transition-colors duration-200 hover:border-white/60"
+      >
+        {pkg.cta}
+      </a>
+    </div>
   );
 }
